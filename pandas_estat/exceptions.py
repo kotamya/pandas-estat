@@ -1,0 +1,2 @@
+class EStatError(IOError):
+    pass
