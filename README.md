@@ -2,11 +2,11 @@
 
 [![python versions](https://img.shields.io/pypi/pyversions/pandas-estat.svg)](https://pypi.org/project/pandas-estat/)
 [![version](https://img.shields.io/pypi/v/pandas-estat.svg)](https://pypi.org/project/pandas-estat/)
-<!-- [![build status](https://travis-ci.com/simaki/pandas-estat.svg?branch=master)](https://travis-ci.com/simaki/pands-estat) -->
-<!-- [![codecov](https://codecov.io/gh/simaki/pandas_estat/branch/master/graph/badge.svg)](https://codecov.io/gh/simaki/pandas_estat) -->
 [![dl](https://img.shields.io/pypi/dm/pandas_estat)](https://pypi.org/project/pandas_estat/)
 [![LICENSE](https://img.shields.io/github/license/simaki/pandas-estat)](LICENSE)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+<!-- [![build status](https://travis-ci.com/simaki/pandas-estat.svg?branch=master)](https://travis-ci.com/simaki/pands-estat) -->
+<!-- [![codecov](https://codecov.io/gh/simaki/pandas_estat/branch/master/graph/badge.svg)](https://codecov.io/gh/simaki/pandas_estat) -->
 
 [政府統計総合窓口 e-Stat](https://www.e-stat.go.jp/) の統計データを `pandas.DataFrame` 形式で取得します。
 
