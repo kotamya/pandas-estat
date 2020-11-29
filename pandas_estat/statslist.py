@@ -8,7 +8,7 @@ from pandas_estat.base import BaseReader
 from pandas_estat.exceptions import EStatError
 
 
-def read_statslist(code):
+def read_statslist(code, **kwargs):
     """
     統計表情報を取得します。
 
@@ -21,13 +21,15 @@ def read_statslist(code):
         数値 8 桁: 政府統計コードで検索
 
         e-Stat API の `statsCode` に相当します。
+    - **kwargs
+        e-Stat API から取得した CSV データをパースする `pandas.read_csv` に与えるパラメータです。
 
     Returns
     -------
     dataframe : pandas.DataFrame
         統計表情報
     """
-    dataframe = StatsListReader(code).read()
+    dataframe = StatsListReader(code).read(**kwargs)
     return dataframe
 
 
@@ -139,9 +141,14 @@ class StatsListReader(BaseReader):
 
         return params
 
-    def read(self) -> pd.DataFrame:
+    def read(self, **kwargs) -> pd.DataFrame:
         """
         統計表を取得します。
+
+        Parameters
+        ----------
+        - **kwargs
+            e-Stat API から取得した CSV データをパースする `pandas.read_csv` に与えるパラメータです。
 
         Returns
         -------
@@ -158,8 +165,10 @@ class StatsListReader(BaseReader):
             )
             raise EStatError(msg)
 
-        # TODO better dtypes
-        # TODO give kwargs
-        dataframe = pd.read_csv(io.StringIO(response_parsed["TABLE"]), dtype=str)
+        if "dtype" not in kwargs:
+            # TODO better dtypes
+            kwargs["dtype"] = str
+
+        dataframe = pd.read_csv(io.StringIO(response_parsed["TABLE"]), **kwargs)
 
         return dataframe
