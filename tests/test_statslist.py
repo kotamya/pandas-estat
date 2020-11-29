@@ -80,6 +80,10 @@ class TestStatsList:
         dataframe = read_statslist(code)
         self._assert_statslist(dataframe)
 
+    def test_updated_date(self):
+        reader = StatsListReader("00200603", updated_date="20200101")
+        assert reader.params["updatedDate"] == "20200101"
+
     def test_error_no_appid(self):
         """
         Raise ValueError if Application ID is unavailable
