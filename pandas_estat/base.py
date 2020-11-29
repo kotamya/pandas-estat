@@ -5,12 +5,12 @@ import requests
 
 class BaseReader:
     regex_code = r""
-    getparam = ""  # e.g. getSimpleStatsList
+    query = ""  # e.g. getSimpleStatsList
     table_tag = ""
 
     @property
     def url(self):
-        return f"https://api.e-stat.go.jp/rest/{self.version}/app/{self.getparam}"
+        return f"https://api.e-stat.go.jp/rest/{self.version}/app/{self.query}"
 
     @property
     def params(self):

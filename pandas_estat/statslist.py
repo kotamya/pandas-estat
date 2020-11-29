@@ -80,7 +80,7 @@ class StatsListReader(BaseReader):
     * Fetch all rows by concatination
     """
 
-    getparam = "getSimpleStatsList"
+    query = "getSimpleStatsList"
     table_tag = "STAT_INF"
 
     def __init__(
