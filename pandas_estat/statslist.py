@@ -8,7 +8,7 @@ from pandas_estat.base import BaseReader
 from pandas_estat.exceptions import EStatError
 
 
-def read_statslist(code, **kwargs):
+def read_statslist(code, limit=None, **kwargs):
     """
     統計表情報を取得します。
 
@@ -29,7 +29,7 @@ def read_statslist(code, **kwargs):
     dataframe : pandas.DataFrame
         統計表情報
     """
-    dataframe = StatsListReader(code).read(**kwargs)
+    dataframe = StatsListReader(code, limit=limit).read(**kwargs)
     return dataframe
 
 
@@ -113,8 +113,6 @@ class StatsListReader(BaseReader):
                 "e-Stat 提供データ: https://www.e-stat.go.jp/api/api-info/api-data"
             )
 
-        if limit is not None:
-            raise NotImplementedError  # TODO
         if start_position is not None:
             raise NotImplementedError  # TODO
         if from_date is not None:
@@ -135,7 +133,6 @@ class StatsListReader(BaseReader):
             params["limit"] = self.limit
         if self.start_position is not None:
             params["startPosition"] = self.start_position
-        # TODO from_date, to_date
         if self.lang is not None:
             params["lang"] = self.lang
 
