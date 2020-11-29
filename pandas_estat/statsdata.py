@@ -7,7 +7,7 @@ from pandas_estat.base import BaseReader
 from pandas_estat.exceptions import EStatError
 
 
-def read_statsdata(code, **kwargs):
+def read_statsdata(code, limit=None, **kwargs):
     """
     統計データを取得します。
 
@@ -25,7 +25,7 @@ def read_statsdata(code, **kwargs):
     dataframe : pandas.DataFrame
         統計データ
     """
-    dataframe = StatsDataReader(code).read(**kwargs)
+    dataframe = StatsDataReader(code, limit=limit).read(**kwargs)
     return dataframe
 
 
@@ -87,8 +87,6 @@ class StatsDataReader(BaseReader):
         if not isinstance(code, str):
             raise ValueError("統計表 ID は str 型で指定してください。")
 
-        if limit is not None:
-            raise NotImplementedError  # TODO
         if start_position is not None:
             raise NotImplementedError  # TODO
         if lang != "J":
