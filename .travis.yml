@@ -1,0 +1,25 @@
+language: python
+
+python:
+  - 3.6
+  - 3.7
+  - 3.8
+sudo: false
+install:
+  - echo "--- install start ---"
+  - python3 -m pip install poetry
+  - poetry install
+  - python3 -m pip install codecov
+  - echo "--- install end ---"
+script:
+  - echo "--- script start ---"
+  - python3 -m pytest --doctest-modules pandas_estat
+  - python3 -m pytest --cov=pandas_estat tests
+  - echo "--- script end ---"
+after_success:
+  - echo "--- after_success start ---"
+  - python3 -m flake8 pandas_estat
+  - python3 -m black --check pandas_estat
+  - python3 -m isort --check --force-single-line-imports pandas_estat
+  - codecov
+  - echo "--- after_success end ---"
