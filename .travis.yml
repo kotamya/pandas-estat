@@ -13,7 +13,7 @@ install:
   - echo "--- install end ---"
 script:
   - echo "--- script start ---"
-  - python3 -m pytest --doctest-modules pandas_estat
+  # - python3 -m pytest --doctest-modules pandas_estat
   - python3 -m pytest --cov=pandas_estat tests
   - echo "--- script end ---"
 after_success:
