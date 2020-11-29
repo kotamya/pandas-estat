@@ -23,5 +23,6 @@ after_success:
   - python3 -m isort --check --force-single-line-imports pandas_estat
   - codecov
   - cd examples
+  - python3 -m pip install matplotlib seaborn
   - python3 restaurants.py
   - echo "--- after_success end ---"
