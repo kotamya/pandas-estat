@@ -15,11 +15,11 @@ script:
   - echo "--- script start ---"
   # - python3 -m pytest --doctest-modules pandas_estat
   - python3 -m pytest --cov=pandas_estat tests
-  - echo "--- script end ---"
-after_success:
-  - echo "--- after_success start ---"
   - python3 -m flake8 pandas_estat
   - python3 -m black --check pandas_estat
   - python3 -m isort --check --force-single-line-imports pandas_estat
+  - echo "--- script end ---"
+after_success:
+  - echo "--- after_success start ---"
   - codecov
   - echo "--- after_success end ---"
