@@ -23,6 +23,15 @@ class TestStatsData:
     def test_read_statsdata(self, code):
         dataframe = read_statsdata(code)
         # TODO assert data content is correct
+        # TODO test more
+
+    def test_limit(self):
+        # 452 statistics in total"0003348423"])
+        dataframe = StatsDataReader("0003348423", limit=5).read()
+        assert len(dataframe.index) == 5
+
+        dataframe = read_statsdata("0003348423", limit=5)
+        assert len(dataframe.index) == 5
 
     def test_start_position(self):
         dataframe = read_statsdata("0003348423", start_position=5)

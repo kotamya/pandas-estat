@@ -7,7 +7,7 @@ from pandas_estat.base import BaseReader
 from pandas_estat.exceptions import EStatError
 
 
-def read_statsdata(code, start_position=None, **kwargs):
+def read_statsdata(code, limit=None, start_position=None, **kwargs):
     """
     統計データを取得します。
 
@@ -30,7 +30,7 @@ def read_statsdata(code, start_position=None, **kwargs):
     dataframe : pandas.DataFrame
         統計データ
     """
-    dataframe = StatsDataReader(code, start_position=start_position).read(**kwargs)
+    dataframe = StatsDataReader(code, limit=limit, start_position=start_position).read(**kwargs)
     return dataframe
 
 
@@ -51,10 +51,6 @@ class StatsDataReader(BaseReader):
         データの取得開始位置（1 から始まる行番号）を指定して下さい。省略時は先頭から取得します。
         統計データを複数回に分けて取得する場合等、継続データを取得する開始位置を指定するために指定します。
         前回受信したデータの <NEXT_KEY> タグの値を指定します。
-    - from_date : str
-        更新日付を指定します。指定された期間で更新された統計表の情報）を提供します。
-    - to_date : str
-        更新日付を指定します。指定された期間で更新された統計表の情報）を提供します。
     - version : str, default "3.0"
         API 仕様バージョンです。
         https://www.e-stat.go.jp/api/api-info/api-spec
@@ -80,8 +76,6 @@ class StatsDataReader(BaseReader):
         code,
         limit=None,
         start_position=None,
-        from_date=None,
-        to_date=None,
         version="3.0",
         lang="J",
         appid=None,
@@ -89,8 +83,6 @@ class StatsDataReader(BaseReader):
         self.code = code
         self.limit = limit
         self.start_position = start_position
-        self.from_date = from_date
-        self.to_date = to_date
         self.version = version
         self.lang = lang
         self.appid = get_appid(appid)
@@ -100,12 +92,6 @@ class StatsDataReader(BaseReader):
         if not isinstance(code, str):
             raise ValueError("統計表 ID は str 型で指定してください。")
 
-        if limit is not None:
-            raise NotImplementedError  # TODO
-        if from_date is not None:
-            raise NotImplementedError  # TODO
-        if to_date is not None:
-            raise NotImplementedError  # TODO
         if lang != "J":
             raise NotImplementedError  # TODO
 
@@ -117,7 +103,6 @@ class StatsDataReader(BaseReader):
             params["limit"] = self.limit
         if self.start_position is not None:
             params["startPosition"] = self.start_position
-        # TODO from_date, to_date
         if self.lang is not None:
             params["lang"] = self.lang
 
