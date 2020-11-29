@@ -35,7 +35,7 @@ pip install pandas-estat
 右の「発行」ボタンをクリックすると表示される "appId" が、e-Stat API のアプリケーション ID です。
 人に漏らさないよう注意してください。
 
-![appid.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/918233/bd691dda-3d53-a957-996a-3bb2781bc527.png)
+![appid.png](https://user-images.githubusercontent.com/24503967/100539488-44680a00-327a-11eb-88de-f93bdd511b9d.png)
 
 発行したアプリケーション ID は、環境変数 `ESTAT_APPID` に設定するか、`set_appid` で設定します。
 
@@ -57,9 +57,9 @@ e-Stat API が提供する統計データは、[e-Stat 提供データ](https://
 全国飲食店の売上のデータは、例えば「サービス産業動向調査」に入っているので、これを取得しましょう。
 左の 8 桁の数字 `00200544` が「**政府統計コード**」で、該当する統計データの一覧を得るために必要です。
 
-![e-stat-data-list.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/918233/d81e6469-ba30-91f9-60fd-4d9e02519718.png)
+![e-stat-data-list1.png](https://user-images.githubusercontent.com/24503967/100539495-4e8a0880-327a-11eb-90f5-b0149cb5be7b.png)
 
-![e-stat-data-description.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/918233/0f9646c9-73fc-51f6-ecaa-b532f31598f6.png)
+![e-stat-data-list2.png](https://user-images.githubusercontent.com/24503967/100539502-53e75300-327a-11eb-8a94-47830a176471.png)
 
 関数 `read_statslist` は、政府統計コードから統計データの一覧を `pandas.DataFrame` 形式で取得します。
 
@@ -189,7 +189,7 @@ plt.savefig("restaurants.png", dpi=300)
 plt.show()
 ```
 
-![restaurants.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/918233/6f39ea30-4b39-157a-6bbe-523ef6b2383e.png)
+![restaurants.png](examples/restaurants.png)
 
 ## クレジット
 
