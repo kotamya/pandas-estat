@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pandas-estat"
-version = "0.0.0"
+version = "0.1.0"
 description = ""
 authors = ["Shota Imaki <shota.imaki@icloud.com>"]
 license = "BSD-3-Clause"
