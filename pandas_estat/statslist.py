@@ -8,7 +8,7 @@ from pandas_estat.base import BaseReader
 from pandas_estat.exceptions import EStatError
 
 
-def read_statslist(code, **kwargs):
+def read_statslist(code, updated_date=None, **kwargs):
     """
     統計表情報を取得します。
 
@@ -21,6 +21,14 @@ def read_statslist(code, **kwargs):
         数値 8 桁: 政府統計コードで検索
 
         e-Stat API の `statsCode` に相当します。
+    - updated_date : str, default None
+        更新日付を指定します。指定された期間で更新された統計表の情報を提供します。
+        以下のいずれかの形式で指定して下さい。
+        * `YYYY`: 単年検索
+        * `YYYYMM`: 単月検索
+        * `YYYYMMDD`: 単日検索
+        * `YYYYMMDD-YYYYMMDD`: 範囲検索
+        e-Stat API の `updatedDate` に相当します。
     - **kwargs
         e-Stat API から取得した CSV データをパースする `pandas.read_csv` に与えるパラメータです。
 
@@ -29,7 +37,7 @@ def read_statslist(code, **kwargs):
     dataframe : pandas.DataFrame
         統計表情報
     """
-    dataframe = StatsListReader(code).read(**kwargs)
+    dataframe = StatsListReader(code, updated_date=updated_date).read(**kwargs)
     return dataframe
 
 
@@ -57,12 +65,13 @@ class StatsListReader(BaseReader):
         統計データを複数回に分けて取得する場合等、継続データを取得する開始位置を指定するために指定します。
         前回受信したデータの <NEXT_KEY> タグの値を指定します。
         `startPosition`
-    - from_date : str
-        更新日付を指定します。指定された期間で更新された統計表の情報）を提供します。
-        `updatedDate`
-    - to_date : str
-        更新日付を指定します。指定された期間で更新された統計表の情報）を提供します。
-        `updatedDate`
+    - updated_date : str, default None
+        更新日付を指定します。指定された期間で更新された統計表の情報を提供します。
+        以下のいずれかの形式で指定して下さい。
+        * `YYYY`: 単年検索
+        * `YYYYMM`: 単月検索
+        * `YYYYMMDD`: 単日検索
+        * `YYYYMMDD-YYYYMMDD`: 範囲検索
     - version : str, default "3.0"
         API 仕様バージョンです。
         https://www.e-stat.go.jp/api/api-info/api-spec
@@ -90,8 +99,7 @@ class StatsListReader(BaseReader):
         code,
         limit=None,
         start_position=None,
-        from_date=None,
-        to_date=None,
+        updated_date=None,
         version="3.0",
         lang="J",
         appid=None,
@@ -99,8 +107,7 @@ class StatsListReader(BaseReader):
         self.code = code
         self.limit = limit
         self.start_position = start_position
-        self.from_date = from_date
-        self.to_date = to_date
+        self.updated_date = updated_date
         self.version = version
         self.lang = lang
         self.appid = get_appid(appid)
@@ -117,10 +124,6 @@ class StatsListReader(BaseReader):
             raise NotImplementedError  # TODO
         if start_position is not None:
             raise NotImplementedError  # TODO
-        if from_date is not None:
-            raise NotImplementedError  # TODO
-        if to_date is not None:
-            raise NotImplementedError  # TODO
         if lang != "J":
             raise NotImplementedError  # TODO
 
@@ -135,6 +138,8 @@ class StatsListReader(BaseReader):
             params["limit"] = self.limit
         if self.start_position is not None:
             params["startPosition"] = self.start_position
+        if self.updated_date is not None:
+            params["updatedDate"] = self.updated_date
         # TODO from_date, to_date
         if self.lang is not None:
             params["lang"] = self.lang
