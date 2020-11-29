@@ -77,12 +77,12 @@ class TestStatsList:
 
     @pytest.mark.parametrize("code", codes)
     def test_read_statslist(self, code):
-        dataframe = read_statslist(code)
-        self._assert_statslist(dataframe)
-
         dataframe = StatsListReader(code).read()
         self._assert_statslist(dataframe)
-
+        
+        dataframe = read_statslist(code)
+        self._assert_statslist(dataframe)
+        
     def test_limit(self):
         # 452 statistics in total
         dataframe = StatsListReader("00200603", limit=5).read()
@@ -90,6 +90,10 @@ class TestStatsList:
 
         dataframe = read_statslist("00200603", limit=5)
         assert len(dataframe.index) == 5
+        
+    def test_updated_date(self):
+        reader = StatsListReader("00200603", updated_date="20200101")
+        assert reader.params["updatedDate"] == "20200101"
 
     def test_error_no_appid(self):
         """
