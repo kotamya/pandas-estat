@@ -1,6 +1,7 @@
 import pytest
 from unittest.mock import patch
 
+import pandas as pd
 from pandas_estat import set_appid
 from pandas_estat import read_statsdata
 from pandas_estat.statsdata import StatsDataReader
@@ -31,6 +32,11 @@ class TestStatsData:
 
         dataframe = read_statsdata("0003348423", limit=5)
         assert len(dataframe.index) == 5
+
+    def test_start_position(self):
+        dataframe = read_statsdata("0003348423", start_position=5)
+        dataframe_expected = read_statsdata("0003348423").iloc[4:].reset_index(drop=True)
+        pd.testing.assert_frame_equal(dataframe, dataframe_expected)
 
     def test_error_no_appid(self):
         """

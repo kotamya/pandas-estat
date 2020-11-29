@@ -7,7 +7,7 @@ from pandas_estat.base import BaseReader
 from pandas_estat.exceptions import EStatError
 
 
-def read_statsdata(code, limit=None, **kwargs):
+def read_statsdata(code, limit=None, start_position=None, **kwargs):
     """
     統計データを取得します。
 
@@ -15,8 +15,13 @@ def read_statsdata(code, limit=None, **kwargs):
     ----------
     - code : str
         統計表 ID です。統計表情報 (`read_statslist`) から検索できます。
-
         e-Stat API の `statsDataId` に相当します。
+    - start_position : int, default None
+        データの取得行数を指定して下さい。省略時は 10 万件です。
+        データ件数が指定した limit 値より少ない場合、全件を取得します。
+        データ件数が指定した limit 値より多い場合（継続データが存在する）は、
+        受信したデータの<NEXT_KEY>タグに継続データの開始行が設定されます。
+        e-Stat API の `startPosition` に対応します。
     - **kwargs
         e-Stat API から取得した CSV データをパースする `pandas.read_csv` に与えるパラメータです。
 
@@ -25,7 +30,7 @@ def read_statsdata(code, limit=None, **kwargs):
     dataframe : pandas.DataFrame
         統計データ
     """
-    dataframe = StatsDataReader(code, limit=limit).read(**kwargs)
+    dataframe = StatsDataReader(code, limit=limit, start_position=start_position).read(**kwargs)
     return dataframe
 
 
@@ -87,8 +92,6 @@ class StatsDataReader(BaseReader):
         if not isinstance(code, str):
             raise ValueError("統計表 ID は str 型で指定してください。")
 
-        if start_position is not None:
-            raise NotImplementedError  # TODO
         if lang != "J":
             raise NotImplementedError  # TODO
 
