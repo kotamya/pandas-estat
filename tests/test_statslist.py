@@ -80,6 +80,11 @@ class TestStatsList:
         dataframe = read_statslist(code)
         self._assert_statslist(dataframe)
 
+    def test_start_position(self):
+        dataframe = read_statslist("00200603", start_position=5)
+        dataframe_expected = read_statslist("00200603").iloc[4:].reset_index(drop=True)
+        pd.testing.assert_frame_equal(dataframe, dataframe_expected)
+
     def test_error_no_appid(self):
         """
         Raise ValueError if Application ID is unavailable
