@@ -68,8 +68,8 @@ class StatsDataReader(BaseReader):
     * Fetch all rows by concatination
     """
 
-    query = "getSimpleStatsData"
-    table_tag = "VALUE"
+    QUERY = "getSimpleStatsData"
+    TABLE_TAG = "VALUE"
 
     def __init__(
         self,
