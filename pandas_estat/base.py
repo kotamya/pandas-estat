@@ -6,8 +6,7 @@ import requests
 
 
 class BaseReader(metaclass=ABCMeta):
-    regex_code = r""
-    query = ""  # e.g. getSimpleStatsList
+    query = ""
     table_tag = ""
 
     @property
