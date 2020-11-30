@@ -1,7 +1,8 @@
+import re
 from abc import ABCMeta
 from abc import abstractmethod
-import re
 
+import pandas as pd
 import requests
 
 
@@ -12,11 +13,11 @@ class BaseReader(metaclass=ABCMeta):
 
     Attributes
     ----------
-    - query : str
+    - QUERY : str
         e-Stat API のリクエスト URL におけるクエリパラメータです。(参照: parameter `url`)
         例えば、統計表情報は `getSimpleStatsList`, 統計データは `getSimpleStatsList` です。
         参照: e-Stat API v3.0 仕様 2. API の利用方法
-    - table_tag : str
+    - TABLE_TAG : str
         表データを示すタグ名です。
         例えば、統計表情報は `STAT_INF`, 統計データは `VALUE` です。
         参照: e-Stat API v3.0 仕様 4. API の出力データ
@@ -31,7 +32,7 @@ class BaseReader(metaclass=ABCMeta):
     TABLE_TAG = NotImplemented
 
     @property
-    def url(self):
+    def url(self) -> str:
         """
         e-Stat API のリクエスト URL です。
         参照: e-Stat API v3.0 仕様 2. API の利用方法
@@ -44,10 +45,11 @@ class BaseReader(metaclass=ABCMeta):
 
     @property
     @abstractmethod
-    def params(self):
+    def params(self) -> dict:
         """
         e-Stat API のパラメータ群を `dict` 形式で返します。
-        参照: e-Stat API v3.0 仕様 2. API の利用方法, 3. API パラメータ
+        参照: e-Stat API v3.0 仕様 2. API の利用方法
+        参照: e-Stat API v3.0 仕様 3. API パラメータ
 
         Returns
         -------
@@ -55,7 +57,7 @@ class BaseReader(metaclass=ABCMeta):
         """
 
     @abstractmethod
-    def read(self):
+    def read(self) -> pd.DataFrame:
         """
         e-Stat API から表データを取得し、`pandas.DataFrame` 形式で返します。
 
@@ -64,7 +66,7 @@ class BaseReader(metaclass=ABCMeta):
         dataframe : pandas.DataFrame
         """
 
-    def get(self):
+    def get(self) -> requests.Response:
         """
         e-Stat API からレスポンスを GET し、`requests.Response` 形式で返します。
 
@@ -74,7 +76,7 @@ class BaseReader(metaclass=ABCMeta):
         """
         return requests.get(self.url, params=self.params)
 
-    def _parse_response_text(self, text):
+    def _parse_response_text(self, text) -> dict:
         """
         e-Stat API からのレスポンスのテキストをパースし、`dict` 形式で返します。
         表データのキーは `TABLE` とし、他の値のキーは e-Stat API のタグ名とします。
