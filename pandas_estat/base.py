@@ -1,9 +1,11 @@
+from abc import ABCMeta
+from abc import abstractmethod
 import re
 
 import requests
 
 
-class BaseReader:
+class BaseReader(metaclass=ABCMeta):
     regex_code = r""
     query = ""  # e.g. getSimpleStatsList
     table_tag = ""
@@ -13,9 +15,16 @@ class BaseReader:
         return f"https://api.e-stat.go.jp/rest/{self.version}/app/{self.query}"
 
     @property
+    @abstractmethod
     def params(self):
         """
         query parameters
+        """
+
+    @abstractmethod
+    def read(self):
+        """
+        get table
         """
 
     def get(self):
@@ -27,11 +36,6 @@ class BaseReader:
         response : requests.Response
         """
         return requests.get(self.url, params=self.params)
-
-    def read(self):
-        """
-        get table
-        """
 
     def _parse_response_text(self, text):
         """
