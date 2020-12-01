@@ -155,8 +155,10 @@ class StatsListReader(BaseReader):
                 "e-Stat 提供データ: https://www.e-stat.go.jp/api/api-info/api-data"
             )
 
-        if lang != "J":
+        if lang == "E":
             raise NotImplementedError
+        if lang not in ("J", "E"):
+            raise ValueError('言語 lang は "J" か "E" で指定してください。')
 
     @property
     def params(self) -> dict:
