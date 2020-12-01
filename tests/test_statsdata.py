@@ -21,6 +21,8 @@ class TestStatsData:
 
     @pytest.mark.parametrize("code", ["0003348423"])
     def test_read_statsdata(self, code):
+        dataframe = StatsDataReader(code).read()
+
         dataframe = read_statsdata(code)
         # TODO assert data content is correct
         # TODO test more
@@ -37,6 +39,12 @@ class TestStatsData:
         dataframe = read_statsdata("0003348423", start_position=5)
         dataframe_expected = read_statsdata("0003348423").iloc[4:].reset_index(drop=True)
         pd.testing.assert_frame_equal(dataframe, dataframe_expected)
+
+    def test_lang(self):
+        with pytest.raises(NotImplementedError):
+            dataframe = read_statsdata("00200603", lang="E")
+        with pytest.raises(ValueError):
+            dataframe = read_statsdata("00200603", lang="j")
 
     def test_error_no_appid(self):
         """
