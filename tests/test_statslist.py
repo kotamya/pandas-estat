@@ -27,7 +27,7 @@ class TestStatsList:
     def reset_global_appid(self):
         set_appid(None)
 
-    def _assert_statslist(self, dataframe):
+    def assert_statslist(self, dataframe):
         assert isinstance(dataframe, pd.DataFrame)
 
         # 参照:
@@ -78,11 +78,11 @@ class TestStatsList:
     @pytest.mark.parametrize("code", codes)
     def test_read_statslist(self, code):
         dataframe = StatsListReader(code).read()
-        self._assert_statslist(dataframe)
-        
+        self.assert_statslist(dataframe)
+
         dataframe = read_statslist(code)
-        self._assert_statslist(dataframe)
-        
+        self.assert_statslist(dataframe)
+
     def test_limit(self):
         # 452 statistics in total
         dataframe = StatsListReader("00200603", limit=5).read()
@@ -90,7 +90,7 @@ class TestStatsList:
 
         dataframe = read_statslist("00200603", limit=5)
         assert len(dataframe.index) == 5
-        
+
     def test_updated_date(self):
         reader = StatsListReader("00200603", updated_date="20200101")
         assert reader.params["updatedDate"] == "20200101"
@@ -99,6 +99,12 @@ class TestStatsList:
         dataframe = read_statslist("00200603", start_position=5)
         dataframe_expected = read_statslist("00200603").iloc[4:].reset_index(drop=True)
         pd.testing.assert_frame_equal(dataframe, dataframe_expected)
+
+    def test_lang(self):
+        with pytest.raises(NotImplementedError):
+            dataframe = read_statslist("00200603", lang="E")
+        with pytest.raises(ValueError):
+            dataframe = read_statslist("00200603", lang="j")
 
     def test_error_no_appid(self):
         """
