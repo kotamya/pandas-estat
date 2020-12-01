@@ -3,10 +3,10 @@
 [![python versions](https://img.shields.io/pypi/pyversions/pandas-estat.svg)](https://pypi.org/project/pandas-estat/)
 [![version](https://img.shields.io/pypi/v/pandas-estat.svg)](https://pypi.org/project/pandas-estat/)
 [![Build Status](https://travis-ci.com/simaki/pandas-estat.svg?branch=main)](https://travis-ci.com/simaki/pandas-estat)
+[![codecov](https://codecov.io/gh/simaki/pandas-estat/branch/main/graph/badge.svg?token=dvKOcKNZUa)](https://codecov.io/gh/simaki/pandas-estat)
 [![dl](https://img.shields.io/pypi/dm/pandas_estat)](https://pypi.org/project/pandas_estat/)
 [![LICENSE](https://img.shields.io/github/license/simaki/pandas-estat)](LICENSE)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-<!-- [![codecov](https://codecov.io/gh/simaki/pandas_estat/branch/master/graph/badge.svg)](https://codecov.io/gh/simaki/pandas_estat) -->
 
 [政府統計総合窓口 e-Stat](https://www.e-stat.go.jp/) の統計データを `pandas.DataFrame` 形式で取得します。
 
@@ -70,8 +70,8 @@ from pandas_estat import read_statslist
 
 statslist = read_statslist("00200544")  # サービス産業動向調査
 statslist
-#       TABLE_INF STAT_CODE  ... SUB_CATEGORY_CODE SUB_CATEGORY                             
-# 0    0003179100  00200544  ...                02         需給流通             
+#       TABLE_INF STAT_CODE  ... SUB_CATEGORY_CODE SUB_CATEGORY
+# 0    0003179100  00200544  ...                02         需給流通
 # 1    0003179101  00200544  ...                02         需給流通
 # 2    0003085562  00200544  ...                02         需給流通
 # 3    0003085612  00200544  ...                02         需給流通
@@ -82,7 +82,7 @@ statslist
 # 139  0003412791  00200544  ...                02         需給流通
 # 140  0003412792  00200544  ...                02         需給流通
 # 141  0003412793  00200544  ...                02         需給流通
-# 
+#
 # [142 rows x 35 columns]
 ```
 
@@ -128,7 +128,7 @@ dataframe
 # 4413      001  売上高（収入額）      20000     その他  ...  2020年6月 p  百万円    844858        NaN
 # 4414      001  売上高（収入額）      20000     その他  ...  2020年7月 p  百万円    809144        NaN
 # 4415      001  売上高（収入額）      20000     その他  ...  2020年8月 p  百万円    798929        NaN
-# 
+#
 # [4416 rows x 11 columns]
 
 set(dataframe["事業活動の産業"])
@@ -159,13 +159,13 @@ dataframe[["時間軸（月次）", "value", "unit"]]
 # 2394 2013-03-01  1680085  百万円
 # 2395 2013-04-01  1541662  百万円
 # 2396 2013-05-01  1606195  百万円
-# ...         ...      ...  ...   
+# ...         ...      ...  ...
 # 2476 2020-01-01  1660809  百万円
 # 2477 2020-02-01  1509541  百万円
 # 2478 2020-03-01  1342779  百万円
 # 2479 2020-04-01   650055  百万円
 # 2480 2020-05-01   747595  百万円
-# 
+#
 # [89 rows x 3 columns]
 ```
 
