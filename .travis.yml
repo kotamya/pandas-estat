@@ -14,9 +14,9 @@ script:
   - echo "--- script end ---"
 after_success:
   - echo "--- after_success start ---"
-  - python3 -m codecov
   - python3 -m pip install poetry
   - python3 -m poetry install
+  - python3 -m codecov
   - python3 -m flake8 pandas_estat
   - python3 -m black --check pandas_estat
   - python3 -m isort --check --force-single-line-imports pandas_estat
