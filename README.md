@@ -18,12 +18,64 @@ pip install pandas-estat
 
 ## 使い方
 
-全国飲食店の売上データを例に、Pandas e-Stat の使い方を説明します。
+### 概要
+
+関数 `read_statslist`, `read_statsdata` で、統計表情報と統計データをそれぞれ取得できます。
+
+```python
+from pandas_estat import set_appid
+from pandas_estat import read_statslist
+
+set_appid("YOUR_APPLICATION_ID")
+
+dataframe = read_statslist("00200544")  # サービス産業動向調査
+dataframe
+#       TABLE_INF STAT_CODE  ... SUB_CATEGORY_CODE SUB_CATEGORY
+# 0    0003179100  00200544  ...                02         需給流通
+# 1    0003179101  00200544  ...                02         需給流通
+# 2    0003085562  00200544  ...                02         需給流通
+# 3    0003085612  00200544  ...                02         需給流通
+# 4    0003090498  00200544  ...                02         需給流通
+# ..          ...       ...  ...               ...          ...
+# 137  0003412789  00200544  ...                02         需給流通
+# 138  0003412790  00200544  ...                02         需給流通
+# 139  0003412791  00200544  ...                02         需給流通
+# 140  0003412792  00200544  ...                02         需給流通
+# 141  0003412793  00200544  ...                02         需給流通
+#
+# [142 rows x 35 columns]
+```
+
+```python
+from pandas_estat import set_appid
+from pandas_estat import read_statsdata
+
+set_appid("YOUR_APPLICATION_ID")
+
+dataframe = read_statsdata("0003191203")  # 事業活動の産業（中分類）別売上高（月次）【2013年1月～】
+dataframe
+#      tab_code      表章項目 cat01_code 事業活動の産業  ...    時間軸（月次） unit     value annotation
+# 0         001  売上高（収入額）      00000      合計  ...    2013年1月  百万円  27331888        NaN
+# 1         001  売上高（収入額）      00000      合計  ...    2013年2月  百万円  27395304        NaN
+# 2         001  売上高（収入額）      00000      合計  ...    2013年3月  百万円  35140562        NaN
+# 3         001  売上高（収入額）      00000      合計  ...    2013年4月  百万円  28676427        NaN
+# 4         001  売上高（収入額）      00000      合計  ...    2013年5月  百万円  28648626        NaN
+# ...       ...       ...        ...     ...  ...        ...  ...       ...        ...
+# 4411      001  売上高（収入額）      20000     その他  ...    2020年4月  百万円    791637        NaN
+# 4412      001  売上高（収入額）      20000     その他  ...    2020年5月  百万円    753034        NaN
+# 4413      001  売上高（収入額）      20000     その他  ...  2020年6月 p  百万円    844858        NaN
+# 4414      001  売上高（収入額）      20000     その他  ...  2020年7月 p  百万円    809144        NaN
+# 4415      001  売上高（収入額）      20000     その他  ...  2020年8月 p  百万円    798929        NaN
+#
+# [4416 rows x 11 columns]
+```
+
+以下、全国飲食店の売上データを例に詳しく説明します。
 
 使い方は三手順です。
 
 1. e-Stat アプリケーション ID を設定する
-2. 統計データ一覧を取得する
+2. 統計表情報を取得する
 3. 統計データを取得する
 
 ### 1. e-Stat アプリケーション ID を設定する
@@ -50,7 +102,7 @@ import pandas_estat
 pandas_estat.set_appid("YOUR_APPLICATION_ID")
 ```
 
-### 2. 統計データ一覧を取得する
+### 2. 統計表情報を取得する
 
 e-Stat API が提供する統計データは、[e-Stat 提供データ](https://www.e-stat.go.jp/api/api-info/api-data) から確認できます。
 
@@ -61,9 +113,9 @@ e-Stat API が提供する統計データは、[e-Stat 提供データ](https://
 
 ![e-stat-data-list2.png](https://user-images.githubusercontent.com/24503967/100539502-53e75300-327a-11eb-8a94-47830a176471.png)
 
-関数 `read_statslist` は、政府統計コードから統計データの一覧を `pandas.DataFrame` 形式で取得します。
+関数 `read_statslist` は、政府統計コードから統計データの一覧（統計表情報）を `pandas.DataFrame` 形式で取得します。
 
-サービス産業動向調査の統計データ一覧は次の通りです。
+サービス産業動向調査の統計表情報は次の通りです。
 
 ```python
 from pandas_estat import read_statslist
