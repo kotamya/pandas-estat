@@ -28,8 +28,7 @@ from pandas_estat import read_statslist
 
 set_appid("YOUR_APPLICATION_ID")
 
-dataframe = read_statslist("00200544")  # サービス産業動向調査
-dataframe
+read_statslist("00200544")  # サービス産業動向調査
 #       TABLE_INF STAT_CODE  ... SUB_CATEGORY_CODE SUB_CATEGORY
 # 0    0003179100  00200544  ...                02         需給流通
 # 1    0003179101  00200544  ...                02         需給流通
@@ -52,8 +51,7 @@ from pandas_estat import read_statsdata
 
 set_appid("YOUR_APPLICATION_ID")
 
-dataframe = read_statsdata("0003191203")  # 事業活動の産業（中分類）別売上高（月次）【2013年1月～】
-dataframe
+read_statsdata("0003191203")  # 事業活動の産業（中分類）別売上高（月次）【2013年1月～】
 #      tab_code      表章項目 cat01_code 事業活動の産業  ...    時間軸（月次） unit     value annotation
 # 0         001  売上高（収入額）      00000      合計  ...    2013年1月  百万円  27331888        NaN
 # 1         001  売上高（収入額）      00000      合計  ...    2013年2月  百万円  27395304        NaN
@@ -96,10 +94,9 @@ export ESTAT_APPID="YOUR_APPLICATION_ID"
 ```
 
 ```python
-import pandas as pd
-import pandas_estat
+from pandas_estat import set_appid
 
-pandas_estat.set_appid("YOUR_APPLICATION_ID")
+set_appid("YOUR_APPLICATION_ID")
 ```
 
 ### 2. 統計表情報を取得する
