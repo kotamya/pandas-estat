@@ -23,11 +23,11 @@ class _GlobalAppID:
 _global_appid = _GlobalAppID(None)
 
 
-def set_appid(appid):
+def set_appid(appid) -> None:
     _global_appid.value = appid
 
 
-def get_appid(appid=None):
+def get_appid(appid=None) -> str:
     """
     Get Application ID.
 

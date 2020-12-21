@@ -15,7 +15,7 @@ def read_statsdata(
     appid=None,
     version="3.0",
     **kwargs,
-):
+) -> pd.DataFrame:
     """
     統計データを取得します。
 
