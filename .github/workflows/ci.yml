@@ -2,6 +2,7 @@ name: CI
 
 env:
   PROJECT_NAME: pandas_estat
+  ESTAT_APPID: ${{ secrets.ESTAT_APPID }}
 
 on:
   push:
