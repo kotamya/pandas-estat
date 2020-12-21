@@ -53,7 +53,7 @@ jobs:
     - name: Run pytest
       run: |
         python3 -m pytest --cov=${PROJECT_NAME} tests
-      if: lways()
+      if: always()
 
     - name: Upload codecov report
       run: |
@@ -97,4 +97,4 @@ jobs:
     - name: Run isort
       run: |
         python3 -m isort --check --force-single-line-imports ${PROJECT_NAME}
-      if: always()a
+      if: always()
