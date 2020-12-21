@@ -2,7 +2,7 @@
 
 [![python versions](https://img.shields.io/pypi/pyversions/pandas-estat.svg)](https://pypi.org/project/pandas-estat/)
 [![version](https://img.shields.io/pypi/v/pandas-estat.svg)](https://pypi.org/project/pandas-estat/)
-[![Build Status](https://travis-ci.com/simaki/pandas-estat.svg?branch=main)](https://travis-ci.com/simaki/pandas-estat)
+[![CI](https://github.com/simaki/pandas-estat/workflows/CI/badge.svg)](https://github.com/simaki/pandas-estat/actions?query=workflow%3ACI)
 [![codecov](https://codecov.io/gh/simaki/pandas-estat/branch/main/graph/badge.svg?token=dvKOcKNZUa)](https://codecov.io/gh/simaki/pandas-estat)
 [![dl](https://img.shields.io/pypi/dm/pandas_estat)](https://pypi.org/project/pandas_estat/)
 [![LICENSE](https://img.shields.io/github/license/simaki/pandas-estat)](LICENSE)
