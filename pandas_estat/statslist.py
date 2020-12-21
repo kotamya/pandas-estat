@@ -17,7 +17,7 @@ def read_statslist(
     appid=None,
     version="3.0",
     **kwargs,
-):
+) -> pd.DataFrame:
     """
     統計表情報を取得します。
 
