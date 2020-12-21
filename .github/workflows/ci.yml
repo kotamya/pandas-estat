@@ -2,6 +2,7 @@ name: CI
 
 env:
   PROJECT_NAME: pandas_estat
+  ESTAT_APPID: ${{ secrets.ESTAT_APPID }}
 
 on:
   push:
@@ -44,10 +45,6 @@ jobs:
     - name: Install pytest
       run: |
         python3 -m pip install pytest pytest-cov codecov
-    
-    - name: Set e-Stat Application ID
-      run: |
-        export ESTAT_APPID=${{ secrets.ESTAT_APPID }}
 
     - name: Run doctest
       run: |
