@@ -1,7 +1,7 @@
 ---
-name: Continuous integration
+name: "[CI] Continuous integration"
 about: Continuous integration
-title: "[CI]"
+title: "[CI] "
 labels: CI
 assignees: ''
 

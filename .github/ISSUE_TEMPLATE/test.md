@@ -1,7 +1,7 @@
 ---
-name: Test
+name: "[TEST] Testing issue"
 about: Testing
-title: "[TEST]"
+title: "[TEST] "
 labels: test
 assignees: ''
 
