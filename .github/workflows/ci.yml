@@ -46,10 +46,10 @@ jobs:
       run: |
         python3 -m pip install pytest pytest-cov codecov
 
-    - name: Run doctest
-      run: |
-        python3 -m pytest --doctest-modules ${PROJECT_NAME}
-      if: always()
+    # - name: Run doctest
+    #   run: |
+    #     python3 -m pytest --doctest-modules ${PROJECT_NAME}
+    #   if: always()
 
     - name: Run pytest
       run: |
