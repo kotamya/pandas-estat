@@ -240,6 +240,10 @@ plt.show()
 
 ![restaurants.png](examples/restaurants.png)
 
+## 貢献
+
+[Issue](https://github.com/simaki/pandas-estat/issues) にある機能の追加などのプルリクエストを歓迎しています。
+
 ## クレジット
 
 このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません。
