@@ -20,7 +20,9 @@ pip install pandas-estat
 
 ### 概要
 
-関数 `read_statslist`, `read_statsdata` で、統計表情報と統計データをそれぞれ取得できます。
+関数 `set_appid` でアプリケーション ID を設定します。
+
+関数 `read_statslist`, `read_statsdata` は、統計表情報と統計データをそれぞれ取得します。
 
 ```python
 from pandas_estat import set_appid
