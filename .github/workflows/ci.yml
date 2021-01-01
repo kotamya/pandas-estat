@@ -8,12 +8,10 @@ on:
   push:
       branches:
       - main
-      - master
       - release/*
   pull_request:
       branches:
       - main
-      - master
       - release/*
   workflow_dispatch:
 
@@ -25,7 +23,7 @@ jobs:
 
     strategy:
       matrix:
-        python-version: ['3.6', '3.7', '3.8']
+        python-version: ['3.6', '3.7', '3.8', '3.9']
 
     steps:
 
@@ -41,9 +39,6 @@ jobs:
       run: |
         python3 -m pip install --upgrade pip
         python3 -m pip install .
-
-    - name: Install pytest
-      run: |
         python3 -m pip install pytest pytest-cov codecov
 
     # - name: Run doctest
@@ -59,6 +54,7 @@ jobs:
     - name: Upload codecov report
       run: |
         python3 -m codecov
+      if: ${{ matrix.python-version == '3.9' }}
 
   Lint:
     name: Lint
@@ -67,7 +63,7 @@ jobs:
 
     strategy:
       matrix:
-        python-version: ['3.8']
+        python-version: ['3.9']
 
     steps:
 
