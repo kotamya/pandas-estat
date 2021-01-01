@@ -10,7 +10,7 @@ repository = "https://github.com/simaki/pandas-estat"
 [tool.poetry.dependencies]
 python = "^3.6.7"
 pandas = "^1.1.4"
-requests = "^2.25.0"
+requests = "^2.23.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.1.2"
