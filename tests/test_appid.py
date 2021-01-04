@@ -17,7 +17,7 @@ class TestAppID:
     def reset_global_appid(self):
         set_appid(None)
 
-    def test_local_appid(self): #, env_appid, global_appid):
+    def test_local_appid(self):
         """
         Local App ID is prioritized over env, global
         """

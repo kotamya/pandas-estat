@@ -1,11 +1,9 @@
-import io
 import re
 
 import pandas as pd
 
 from pandas_estat.appid import get_appid
 from pandas_estat.base import BaseReader
-from pandas_estat.exceptions import EStatError
 
 
 def read_statslist(
@@ -183,32 +181,3 @@ class StatsListReader(BaseReader):
             params["lang"] = self.lang
 
         return params
-
-    def read(self, **kwargs) -> pd.DataFrame:
-        """
-        e-Stat API から統計表情報を取得し、`pandas.DataFrame` 形式で返します。
-
-        Parameters
-        ----------
-        - **kwargs
-            e-Stat API から取得した CSV データをパースする `pandas.read_csv` に与えるパラメータです。
-
-        Returns
-        -------
-        dataframe : pandas.DataFrame
-            統計表情報
-        """
-        response = self.get()
-        response_parsed = self._parse_response_text(response.text)
-
-        if "TABLE" not in response_parsed:
-            raise EStatError(
-                f'{response_parsed["ERROR_MSG"]} (STATUS: {response_parsed["STATUS"]})'
-            )
-
-        if "dtype" not in kwargs:
-            kwargs["dtype"] = str
-
-        dataframe = pd.read_csv(io.StringIO(response_parsed["TABLE"]), **kwargs)
-
-        return dataframe

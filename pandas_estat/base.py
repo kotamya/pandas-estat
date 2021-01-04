@@ -1,12 +1,14 @@
+import abc
+import io
 import re
-from abc import ABCMeta
-from abc import abstractmethod
 
 import pandas as pd
 import requests
 
+from .exceptions import EStatError
 
-class BaseReader(metaclass=ABCMeta):
+
+class BaseReader(abc.ABC):
     """
     Base class of all readers in `pandas-estat`.
     `StatsListReader` and `StatsDataReader` subclass this.
@@ -44,7 +46,7 @@ class BaseReader(metaclass=ABCMeta):
         return f"https://api.e-stat.go.jp/rest/{self.version}/app/{self.QUERY}"
 
     @property
-    @abstractmethod
+    @abc.abstractmethod
     def params(self) -> dict:
         """
         e-Stat API のパラメータ群を `dict` 形式で返します。
@@ -56,15 +58,34 @@ class BaseReader(metaclass=ABCMeta):
         params : dict
         """
 
-    @abstractmethod
-    def read(self) -> pd.DataFrame:
+    def read(self, **kwargs) -> pd.DataFrame:
         """
         e-Stat API から表データを取得し、`pandas.DataFrame` 形式で返します。
+
+        Parameters
+        ----------
+        - **kwargs
+            e-Stat API から取得した CSV データをパースする `pandas.read_csv` に与えるパラメータです。
 
         Returns
         -------
         dataframe : pandas.DataFrame
+            表データ
         """
+        response = self.get()
+        response_parsed = self._parse_response_text(response.text)
+
+        if "TABLE" not in response_parsed:
+            message = response_parsed.get("ERROR_MSG", "")
+            status = response_parsed.get("STATUS", "")
+            raise EStatError(f"{message} (STATUS: {status})")
+
+        if "dtype" not in kwargs:
+            kwargs["dtype"] = str
+
+        dataframe = pd.read_csv(io.StringIO(response_parsed["TABLE"]), **kwargs)
+
+        return dataframe
 
     def get(self) -> requests.Response:
         """
