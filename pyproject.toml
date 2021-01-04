@@ -4,7 +4,6 @@ version = "0.2.4"
 description = "Fetch e-Stat data as Pandas DataFrame."
 authors = ["Shota Imaki <shota.imaki@icloud.com>"]
 license = "BSD-3-Clause"
-homepage = "https://github.com/simaki/pandas-estat"
 repository = "https://github.com/simaki/pandas-estat"
 
 [tool.poetry.dependencies]
