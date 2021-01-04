@@ -1,12 +1,11 @@
+import abc
 import re
-from abc import ABCMeta
-from abc import abstractmethod
 
 import pandas as pd
 import requests
 
 
-class BaseReader(metaclass=ABCMeta):
+class BaseReader(abc.ABC):
     """
     Base class of all readers in `pandas-estat`.
     `StatsListReader` and `StatsDataReader` subclass this.
@@ -44,7 +43,7 @@ class BaseReader(metaclass=ABCMeta):
         return f"https://api.e-stat.go.jp/rest/{self.version}/app/{self.QUERY}"
 
     @property
-    @abstractmethod
+    @abc.abstractmethod
     def params(self) -> dict:
         """
         e-Stat API のパラメータ群を `dict` 形式で返します。
@@ -56,7 +55,7 @@ class BaseReader(metaclass=ABCMeta):
         params : dict
         """
 
-    @abstractmethod
+    @abc.abstractmethod
     def read(self) -> pd.DataFrame:
         """
         e-Stat API から表データを取得し、`pandas.DataFrame` 形式で返します。
