@@ -202,9 +202,9 @@ class StatsListReader(BaseReader):
         response_parsed = self._parse_response_text(response.text)
 
         if "TABLE" not in response_parsed:
-            raise EStatError(
-                f'{response_parsed["ERROR_MSG"]} (STATUS: {response_parsed["STATUS"]})'
-            )
+            message = response_parsed.get("ERROR_MSG", "")
+            status = response_parsed.get("STATUS", "")
+            raise EStatError(f"{message} (STATUS: {status})")
 
         if "dtype" not in kwargs:
             kwargs["dtype"] = str
