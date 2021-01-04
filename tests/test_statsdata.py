@@ -37,7 +37,9 @@ class TestStatsData:
 
     def test_start_position(self):
         dataframe = read_statsdata("0003348423", start_position=5)
-        dataframe_expected = read_statsdata("0003348423").iloc[4:].reset_index(drop=True)
+        dataframe_expected = (
+            read_statsdata("0003348423").iloc[4:].reset_index(drop=True)
+        )
         pd.testing.assert_frame_equal(dataframe, dataframe_expected)
 
     def test_lang(self):
