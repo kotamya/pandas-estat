@@ -1,11 +1,11 @@
-import pytest
+import os
 from unittest.mock import patch
 
-import os
+import pytest
 
+from pandas_estat.appid import _global_appid
 from pandas_estat.appid import get_appid
 from pandas_estat.appid import set_appid
-from pandas_estat.appid import _global_appid
 
 
 class TestAppID:

@@ -1,15 +1,13 @@
-import pytest
+import os
 from unittest.mock import patch
 
-import os
-
 import pandas as pd
+import pytest
 
-from pandas_estat import set_appid
 from pandas_estat import read_statslist
-from pandas_estat.statslist import StatsListReader
+from pandas_estat import set_appid
 from pandas_estat.exceptions import EStatError
-
+from pandas_estat.statslist import StatsListReader
 
 with open(os.path.dirname(__file__) + "/codes_statslist.txt") as f:
     codes = f.read().splitlines()

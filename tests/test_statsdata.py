@@ -1,11 +1,12 @@
-import pytest
 from unittest.mock import patch
 
 import pandas as pd
-from pandas_estat import set_appid
+import pytest
+
 from pandas_estat import read_statsdata
-from pandas_estat.statsdata import StatsDataReader
+from pandas_estat import set_appid
 from pandas_estat.exceptions import EStatError
+from pandas_estat.statsdata import StatsDataReader
 
 
 class TestStatsData:
