@@ -1,13 +1,13 @@
 [tool.poetry]
 name = "pandas-estat"
-version = "0.2.5"
+version = "0.2.6"
 description = "Fetch e-Stat data as Pandas DataFrame."
 authors = ["Shota Imaki <shota.imaki@icloud.com>"]
 license = "BSD-3-Clause"
 repository = "https://github.com/simaki/pandas-estat"
 
 [tool.poetry.dependencies]
-python = "^3.6.7"
+python = "^3.6.13"
 pandas = "^1.1.4"
 requests = "^2.23.0"
 
