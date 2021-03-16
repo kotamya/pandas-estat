@@ -12,7 +12,7 @@ pandas = "^1.1.4"
 requests = "^2.23.0"
 
 [tool.poetry.dev-dependencies]
-pytest = "^6.1.2"
+pytest = "^6.2.2"
 pytest-cov = "^2.11.1"
 codecov = "^2.1.10"
 flake8 = "^3.9.0"
