@@ -8,10 +8,12 @@ on:
   push:
       branches:
       - main
+      - develop
       - release/*
   pull_request:
       branches:
       - main
+      - develop
       - release/*
   workflow_dispatch:
 
@@ -42,13 +44,11 @@ jobs:
         python3 -m pip install pytest pytest-cov codecov
 
     # - name: Run doctest
-    #   run: |
-    #     python3 -m pytest --doctest-modules ${PROJECT_NAME}
+    #   run: python3 -m pytest --doctest-modules ${PROJECT_NAME}
     #   if: always()
 
     - name: Run pytest
-      run: |
-        python3 -m pytest --cov=${PROJECT_NAME} tests
+      run: python3 -m pytest --cov=${PROJECT_NAME} tests
       if: always()
 
     - name: Upload codecov report
@@ -81,16 +81,15 @@ jobs:
       if: always()
 
     - name: Run flake8
-      run: |
-        python3 -m flake8 ${PROJECT_NAME}
+      run: python3 -m flake8 ${PROJECT_NAME}
       if: always()
 
     - name: Run black
-      run: |
-        python3 -m black --check ${PROJECT_NAME}
+      uses: psf/black@stable
+      with:
+        black_args: ". --check"
       if: always()
 
     - name: Run isort
-      run: |
-        python3 -m isort --check --force-single-line-imports ${PROJECT_NAME}
+      run: python3 -m isort --check --force-single-line-imports ${PROJECT_NAME}
       if: always()
