@@ -2,7 +2,7 @@
 name = "pandas-estat"
 version = "0.2.6"
 description = "Fetch e-Stat data as Pandas DataFrame."
-authors = ["Shota Imaki <shota.imaki@icloud.com>"]
+authors = ["Shota Imaki <shota.imaki.0801@gmail.com>"]
 license = "BSD-3-Clause"
 repository = "https://github.com/simaki/pandas-estat"
 
@@ -15,7 +15,6 @@ requests = "^2.23.0"
 pytest = "^6.2.2"
 pytest-cov = "^2.11.1"
 codecov = "^2.1.10"
-flake8 = "^3.9.0"
 black = "^20.8b1"
 isort = "^5.7.0"
 
