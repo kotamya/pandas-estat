@@ -66,5 +66,5 @@ if __name__ == "__main__":
     plt.title("Restaurants Monthly Revenue")
     plt.xlabel("Month")
     plt.ylabel("Revenue [bn JPY]")
-    plt.savefig("restaurants.png", dpi=300, bbox_inches = 'tight', pad_inches=0.1)
+    plt.savefig("restaurants.png", dpi=300, bbox_inches="tight", pad_inches=0.1)
     # plt.show()
