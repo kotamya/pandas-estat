@@ -11,8 +11,8 @@ def print_as_comment(obj):
 
 if __name__ == "__main__":
     import pandas as pd
-    import pandas_estat
 
+    import pandas_estat
     from pandas_estat import read_statslist
 
     statslist = read_statslist("00200544")  # サービス産業動向調査
