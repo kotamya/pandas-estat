@@ -5,13 +5,7 @@ from pandas_estat.base import BaseReader
 
 
 def read_statsdata(
-    code,
-    limit=None,
-    start_position=None,
-    lang="J",
-    appid=None,
-    version="3.0",
-    **kwargs,
+    code, limit=None, start_position=None, lang="J", appid=None, version="3.0", **kwargs
 ) -> pd.DataFrame:
     """
     統計データを取得します。
@@ -104,13 +98,7 @@ class StatsDataReader(BaseReader):
     TABLE_TAG = "VALUE"
 
     def __init__(
-        self,
-        code,
-        limit=None,
-        start_position=None,
-        lang="J",
-        appid=None,
-        version="3.0",
+        self, code, limit=None, start_position=None, lang="J", appid=None, version="3.0"
     ):
         self.code = code
         self.limit = limit
