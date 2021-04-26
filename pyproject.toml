@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pandas-estat"
-version = "0.2.6"
+version = "0.2.7"
 description = "Fetch e-Stat data as Pandas DataFrame."
 authors = ["Shota Imaki <shota.imaki.0801@gmail.com>"]
 license = "BSD-3-Clause"
@@ -15,7 +15,7 @@ requests = "^2.23.0"
 pytest = "^6.2.2"
 pytest-cov = "^2.11.1"
 codecov = "^2.1.10"
-black = "^20.8b1"
+black = "^21.4b0"
 isort = "^5.7.0"
 
 [build-system]
