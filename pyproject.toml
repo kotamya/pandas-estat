@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pandas-estat"
-version = "0.2.7"
+version = "0.2.8"
 description = "Fetch e-Stat data as Pandas DataFrame."
 authors = ["Shota Imaki <shota.imaki.0801@gmail.com>"]
 license = "BSD-3-Clause"

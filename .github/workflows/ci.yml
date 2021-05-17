@@ -4,7 +4,20 @@ env:
   PROJECT_NAME: pandas_estat
   ESTAT_APPID: ${{ secrets.ESTAT_APPID }}
 
-on: [push, pull_request, workflow_dispatch]
+on:
+  push:
+    branches:
+      - main
+      - develop
+      - release/*
+      - hotfix*
+  pull_request:
+    branches:
+      - main
+      - develop
+      - release/*
+      - hotfix*
+  workflow_dispatch:
 
 jobs:
 
@@ -28,17 +41,14 @@ jobs:
 
     - name: Install package
       run: |
-        python3 -m pip install --upgrade pip
-        python3 -m pip install .
-        python3 -m pip install pytest pytest-cov codecov
+        pip install .
+        pip install pytest pytest-cov codecov
 
     # - name: Run doctest
     #   run: python3 -m pytest --doctest-modules ${PROJECT_NAME}
-    #   if: always()
 
     - name: Run pytest
       run: python3 -m pytest --cov=${PROJECT_NAME} tests
-      if: always()
 
     - name: Upload codecov report
       uses: codecov/codecov-action@v1
@@ -59,15 +69,13 @@ jobs:
 
     - uses: actions/setup-python@v2
 
-    - name: Run black
-      uses: psf/black@stable
-      if: always()
+    - name: Lint (black)
+      uses: psf/black@21.5b1
 
-    - name: Run isort
+    - name: Lint (isort)
       uses: jamescurtin/isort-action@master
       with:
         configuration: --check-only --diff --force-single-line
-      if: always()
 
   format:
     
@@ -86,7 +94,9 @@ jobs:
     - uses: actions/setup-python@v2
     
     - name: Format (black)
-      run: python -m pip install black && black .
+      uses: psf/black@21.5b1
+      with:
+        options: --skip-magic-trailing-comma
 
     - name: Format (isort)
       uses: jamescurtin/isort-action@master
@@ -96,6 +106,7 @@ jobs:
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v3
       with:
+        author: GitHub Actions <action@github.com>
         commit-message: format
         delete-branch: true
         branch-suffix: short-commit-hash
