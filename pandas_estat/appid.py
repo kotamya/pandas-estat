@@ -7,7 +7,7 @@ class _GlobalAppID:
 
     Parameters
     ----------
-    - value : str
+    value : str
         Application ID.
     """
 
@@ -37,7 +37,7 @@ def get_appid(appid=None) -> str:
 
     Parameters
     ----------
-    - appid : str, optional
+    appid : str, optional
         If given, just return this.
 
     Returns
