@@ -15,11 +15,11 @@ class BaseReader(abc.ABC):
 
     Attributes
     ----------
-    - QUERY : str
+    QUERY : str
         e-Stat API のリクエスト URL におけるクエリパラメータです。(参照: parameter `url`)
         例えば、統計表情報は `getSimpleStatsList`, 統計データは `getSimpleStatsList` です。
         参照: e-Stat API v3.0 仕様 2. API の利用方法
-    - TABLE_TAG : str
+    TABLE_TAG : str
         表データを示すタグ名です。
         例えば、統計表情報は `STAT_INF`, 統計データは `VALUE` です。
         参照: e-Stat API v3.0 仕様 4. API の出力データ
@@ -64,7 +64,7 @@ class BaseReader(abc.ABC):
 
         Parameters
         ----------
-        - **kwargs
+        **kwargs
             e-Stat API から取得した CSV データをパースする `pandas.read_csv` に与えるパラメータです。
 
         Returns
@@ -105,7 +105,7 @@ class BaseReader(abc.ABC):
 
         Parameters
         ----------
-        - text : str
+        text : str
             レスポンスのテキストです。
 
         Returns
