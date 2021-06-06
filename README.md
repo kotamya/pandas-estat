@@ -242,9 +242,15 @@ plt.show()
 
 ![restaurants.png](examples/restaurants.png)
 
-## 貢献
+## Contributing
 
-[Issue](https://github.com/simaki/pandas-estat/issues) にある機能の追加などのプルリクエストを歓迎しています。
+Any contributions are more than welcome.
+
+The maintainer (simaki) is not making further enhancements and appreciates pull requests to make them.
+See [Issue](https://github.com/simaki/pandas-estat/issues) for proposed features.
+Please take a look at [CONTRIBUTING.md](.github/CONTRIBUTING.md) before creating a pull request.
+
+Issues and pull requests can be in English or 日本語.
 
 ## クレジット
 
