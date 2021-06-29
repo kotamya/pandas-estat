@@ -3,13 +3,6 @@
 Pandas e-Stat Documentation
 ===========================
 
-.. contents:: pandas_estat
-    :depth: 2
-    :local:
-    :backlinks: top
-
-.. currentmodule:: pandas_estat
-
 API
 --------------------
 
