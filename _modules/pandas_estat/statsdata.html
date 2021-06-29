@@ -1,0 +1,305 @@
+<!doctype html>
+<html class="no-js">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><link rel="index" title="索引" href="../../genindex.html" /><link rel="search" title="検索" href="../../search.html" />
+
+    <meta name="generator" content="sphinx-4.0.2, furo 2021.06.24.beta37"/>
+        <title>pandas_estat.statsdata - Pandas e-Stat ドキュメント</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css" />
+    
+
+
+<style>
+  :root {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+  }
+
+  /* For allowing end-user-specific overrides */
+  .override-light {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  .override-dark {
+    --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+  }
+</style><link media="(prefers-color-scheme: dark)" rel="stylesheet" href="../../_static/pygments_dark.css"></head>
+  <body dir="">
+    
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke-width="1.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z"/>
+      <line x1="4" y1="6" x2="20" y2="6" />
+      <line x1="10" y1="12" x2="20" y2="12" />
+      <line x1="6" y1="18" x2="20" y2="18" />
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../index.html"><div class="brand">Pandas e-Stat  ドキュメント</div></a>
+    </div>
+    <div class="header-right">
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../index.html">
+  
+  
+  <span class="sidebar-brand-text">Pandas e-Stat  ドキュメント</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../search.html">
+  <input class="sidebar-search" placeholder=検索 name="q">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../set_appid.html">pandas_estat.set_appid</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../read_statslist.html">pandas_estat.read_statslist</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../read_statsdata.html">pandas_estat.read_statsdata</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/simaki/pandas-estat">GitHub</a></li>
+</ul>
+
+</div>
+</div>
+      </div>
+      
+    </div>
+  </aside>
+  <main class="main">
+    <div class="content">
+      <article role="main">
+        <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+        </label>
+        <h1>pandas_estat.statsdata のソースコード</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="kn">from</span> <span class="nn">pandas_estat.appid</span> <span class="kn">import</span> <span class="n">get_appid</span>
+<span class="kn">from</span> <span class="nn">pandas_estat.base</span> <span class="kn">import</span> <span class="n">BaseReader</span>
+
+
+<div class="viewcode-block" id="read_statsdata"><a class="viewcode-back" href="../../read_statsdata.html#pandas_estat.read_statsdata">[ドキュメント]</a><span class="k">def</span> <span class="nf">read_statsdata</span><span class="p">(</span>
+    <span class="n">code</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">start_position</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">"J"</span><span class="p">,</span> <span class="n">appid</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="s2">"3.0"</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+    <span class="sd">"""統計データを取得します。</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    code : str</span>
+<span class="sd">        統計表 ID です。統計表情報 (:func:`read_statslist`) から検索できます。</span>
+<span class="sd">        e-Stat API の `statsDataId` に相当します。</span>
+<span class="sd">    limit : int, default None</span>
+<span class="sd">        データの取得行数を指定して下さい。省略時は 10 万件です。</span>
+<span class="sd">        データ件数が指定した limit 値より少ない場合、全件を取得します。</span>
+<span class="sd">        データ件数が指定した limit 値より多い場合（継続データが存在する）は、</span>
+<span class="sd">        受信したデータの `&lt;NEXT_KEY&gt;` タグに継続データの開始行が設定されます。</span>
+<span class="sd">        e-Stat API の `limit` に対応します。</span>
+<span class="sd">    start_position : int, default None</span>
+<span class="sd">        データの取得行数を指定して下さい。省略時は 10 万件です。</span>
+<span class="sd">        データ件数が指定した limit 値より少ない場合、全件を取得します。</span>
+<span class="sd">        データ件数が指定した limit 値より多い場合（継続データが存在する）は、</span>
+<span class="sd">        受信したデータの `&lt;NEXT_KEY&gt;` タグに継続データの開始行が設定されます。</span>
+<span class="sd">        e-Stat API の `startPosition` に対応します。</span>
+<span class="sd">    lang : {"J", "E"}, default "J"</span>
+<span class="sd">        取得するデータの言語です。</span>
+<span class="sd">        `"J"` (日本語) または `"E"` (英語) で指定してください。</span>
+<span class="sd">        e-Stat API の `lang` に対応します。</span>
+<span class="sd">    appid : str, optional</span>
+<span class="sd">        アプリケーション ID です。</span>
+<span class="sd">        指定しない場合、:func:`set_appid` で指定した値か、</span>
+<span class="sd">        環境変数 `ESTAT_APPID` を用います。</span>
+<span class="sd">        e-Stat API の `appId` に対応します。</span>
+<span class="sd">    version : str, default "3.0"</span>
+<span class="sd">        API 仕様バージョンです。</span>
+<span class="sd">        （参考: https://www.e-stat.go.jp/api/api-info/api-spec）</span>
+<span class="sd">    **kwargs</span>
+<span class="sd">        e-Stat API から取得した CSV データをパースする `pandas.read_csv` に与えるパラメータです。</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pandas.DataFrame</span>
+<span class="sd">    """</span>
+    <span class="n">reader</span> <span class="o">=</span> <span class="n">StatsDataReader</span><span class="p">(</span>
+        <span class="n">code</span><span class="p">,</span>
+        <span class="n">limit</span><span class="o">=</span><span class="n">limit</span><span class="p">,</span>
+        <span class="n">start_position</span><span class="o">=</span><span class="n">start_position</span><span class="p">,</span>
+        <span class="n">lang</span><span class="o">=</span><span class="n">lang</span><span class="p">,</span>
+        <span class="n">appid</span><span class="o">=</span><span class="n">appid</span><span class="p">,</span>
+        <span class="n">version</span><span class="o">=</span><span class="n">version</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">dataframe</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">dataframe</span></div>
+
+
+<span class="k">class</span> <span class="nc">StatsDataReader</span><span class="p">(</span><span class="n">BaseReader</span><span class="p">):</span>
+    <span class="sd">"""</span>
+<span class="sd">    統計データを取得します。</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    code : str</span>
+<span class="sd">        統計表 ID です。統計表情報 (`read_statslist`) から検索できます。</span>
+<span class="sd">        e-Stat API の `statsDataId` に相当します。</span>
+<span class="sd">    limit : int, default None</span>
+<span class="sd">        データの取得行数を指定して下さい。省略時は 10 万件です。</span>
+<span class="sd">        データ件数が指定した limit 値より少ない場合、全件を取得します。</span>
+<span class="sd">        データ件数が指定した limit 値より多い場合（継続データが存在する）は、</span>
+<span class="sd">        受信したデータの&lt;NEXT_KEY&gt;タグに継続データの開始行が設定されます。</span>
+<span class="sd">        e-Stat API の `limit` に対応します。</span>
+<span class="sd">    start_position : int, default None</span>
+<span class="sd">        データの取得行数を指定して下さい。省略時は 10 万件です。</span>
+<span class="sd">        データ件数が指定した limit 値より少ない場合、全件を取得します。</span>
+<span class="sd">        データ件数が指定した limit 値より多い場合（継続データが存在する）は、</span>
+<span class="sd">        受信したデータの&lt;NEXT_KEY&gt;タグに継続データの開始行が設定されます。</span>
+<span class="sd">        e-Stat API の `startPosition` に対応します。</span>
+<span class="sd">    lang : {"J", "E"}, default "J"</span>
+<span class="sd">        取得するデータの言語です。</span>
+<span class="sd">        "J" (日本語) または "E" (英語) で指定してください。</span>
+<span class="sd">        e-Stat API の `lang` に対応します。</span>
+<span class="sd">    appid : str, optional</span>
+<span class="sd">        アプリケーション ID です。</span>
+<span class="sd">        指定しない場合、`pandas_estat.set_appid(...)` で指定した値か、環境変数 `ESTAT_APPID` を用います。</span>
+<span class="sd">        e-Stat API の `appId` に対応します。</span>
+<span class="sd">    version : str, default "3.0"</span>
+<span class="sd">        API 仕様バージョンです。</span>
+<span class="sd">        https://www.e-stat.go.jp/api/api-info/api-spec</span>
+<span class="sd">    **kwargs</span>
+<span class="sd">        e-Stat API から取得した CSV データをパースする `pandas.read_csv` に与えるパラメータです。</span>
+<span class="sd">    """</span>
+
+    <span class="n">QUERY</span> <span class="o">=</span> <span class="s2">"getSimpleStatsData"</span>
+    <span class="n">TABLE_TAG</span> <span class="o">=</span> <span class="s2">"VALUE"</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">start_position</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">"J"</span><span class="p">,</span> <span class="n">appid</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="s2">"3.0"</span>
+    <span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">code</span> <span class="o">=</span> <span class="n">code</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">limit</span> <span class="o">=</span> <span class="n">limit</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">start_position</span> <span class="o">=</span> <span class="n">start_position</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lang</span> <span class="o">=</span> <span class="n">lang</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">appid</span> <span class="o">=</span> <span class="n">get_appid</span><span class="p">(</span><span class="n">appid</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">version</span> <span class="o">=</span> <span class="n">version</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">appid</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"アプリケーション ID が指定されていません。"</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"統計表 ID は str 型で指定してください。"</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">lang</span> <span class="o">==</span> <span class="s2">"E"</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+        <span class="k">if</span> <span class="n">lang</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">"J"</span><span class="p">,</span> <span class="s2">"E"</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">'言語 lang は "J" か "E" で指定してください。'</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">params</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+        <span class="sd">"""</span>
+<span class="sd">        e-Stat API のパラメータ群を `dict` 形式で返します。</span>
+<span class="sd">        参照: e-Stat API v3.0 仕様 2.3 API の利用方法 - 統計データ取得</span>
+<span class="sd">        参照: e-Stat API v3.0 仕様 3.4 API パラメータ - 統計データ取得</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        params : dict</span>
+<span class="sd">        """</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"appId"</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">appid</span><span class="p">,</span> <span class="s2">"statsDataId"</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">code</span><span class="p">}</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">limit</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">params</span><span class="p">[</span><span class="s2">"limit"</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">limit</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_position</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">params</span><span class="p">[</span><span class="s2">"startPosition"</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_position</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">lang</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">params</span><span class="p">[</span><span class="s2">"lang"</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lang</span>
+
+        <span class="k">return</span> <span class="n">params</span>
+</pre></div>
+      </article>
+      <footer>
+        
+        <div class="related-pages">
+          
+          
+        </div>
+
+        <div class="related-information">
+              Copyright &#169; 2021, Shota Imaki
+            |
+            Built with <a href="https://www.sphinx-doc.org/">Sphinx</a>
+              and
+              <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+              <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </main>
+</div><script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/scripts/main.js"></script>
+    <script src="../../_static/translations.js"></script>
+    </body>
+</html>
