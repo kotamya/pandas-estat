@@ -23,7 +23,14 @@ class _GlobalAppID:
 _global_appid = _GlobalAppID(None)
 
 
-def set_appid(appid) -> None:
+def set_appid(appid: str) -> None:
+    """アプリケーション ID を設定します。
+
+    Parameters
+    ----------
+    appid : str
+        設定するアプリケーション ID です。
+    """
     _global_appid.value = appid
 
 
