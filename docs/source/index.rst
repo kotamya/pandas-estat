@@ -3,6 +3,8 @@
 Pandas e-Stat Documentation
 ===========================
 
+政府統計総合窓口 e-Stat の統計データを pandas.DataFrame 形式で取得します。
+
 API
 --------------------
 
