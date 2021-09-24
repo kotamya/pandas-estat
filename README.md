@@ -5,8 +5,9 @@
 [![CI](https://github.com/simaki/pandas-estat/workflows/CI/badge.svg)](https://github.com/simaki/pandas-estat/actions?query=workflow%3ACI)
 [![codecov](https://codecov.io/gh/simaki/pandas-estat/branch/main/graph/badge.svg?token=dvKOcKNZUa)](https://codecov.io/gh/simaki/pandas-estat)
 [![dl](https://img.shields.io/pypi/dm/pandas_estat)](https://pypi.org/project/pandas_estat/)
-[![LICENSE](https://img.shields.io/github/license/simaki/pandas-estat)](LICENSE)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+
+[Documentation](https://simaki.github.io/pandas-estat/)
 
 [政府統計総合窓口 e-Stat](https://www.e-stat.go.jp/) の統計データを `pandas.DataFrame` 形式で取得します。
 
