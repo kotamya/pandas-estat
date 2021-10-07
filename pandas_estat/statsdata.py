@@ -23,38 +23,38 @@ def read_statsdata(
     Parameters
     ----------
     code : str
-        統計表 ID です。統計表情報 (`read_statslist`) から検索できます。
+        統計表 ID です。統計表情報 (:func:`read_statslist`) から検索できます。
         e-Stat API の `statsDataId` に相当します。
     limit : int, default None
         データの取得行数を指定して下さい。省略時は 10 万件です。
         データ件数が指定した limit 値より少ない場合、全件を取得します。
         データ件数が指定した limit 値より多い場合（継続データが存在する）は、
-        受信したデータの<NEXT_KEY>タグに継続データの開始行が設定されます。
+        受信したデータの `<NEXT_KEY>` タグに継続データの開始行が設定されます。
         e-Stat API の `limit` に対応します。
     start_position : int, default None
         データの取得行数を指定して下さい。省略時は 10 万件です。
         データ件数が指定した limit 値より少ない場合、全件を取得します。
         データ件数が指定した limit 値より多い場合（継続データが存在する）は、
-        受信したデータの<NEXT_KEY>タグに継続データの開始行が設定されます。
+        受信したデータの `<NEXT_KEY>` タグに継続データの開始行が設定されます。
         e-Stat API の `startPosition` に対応します。
     lang : {"J", "E"}, default "J"
         取得するデータの言語です。
-        "J" (日本語) または "E" (英語) で指定してください。
+        `"J"` (日本語) または `"E"` (英語) で指定してください。
         e-Stat API の `lang` に対応します。
     appid : str, optional
         アプリケーション ID です。
-        指定しない場合、`pandas_estat.set_appid(...)` で指定した値か、環境変数 `ESTAT_APPID` を用います。
+        指定しない場合、:func:`set_appid` で指定した値か、
+        環境変数 `ESTAT_APPID` を用います。
         e-Stat API の `appId` に対応します。
     version : str, default "3.0"
         API 仕様バージョンです。
-        https://www.e-stat.go.jp/api/api-info/api-spec
+        （参考: https://www.e-stat.go.jp/api/api-info/api-spec）
     **kwargs
         e-Stat API から取得した CSV データをパースする `pandas.read_csv` に与えるパラメータです。
 
     Returns
     -------
-    dataframe : pandas.DataFrame
-        統計データ
+    pandas.DataFrame
     """
     reader = StatsDataReader(
         code,
