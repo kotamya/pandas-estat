@@ -1,14 +1,24 @@
-import pandas as pd
+# found module but no type hints or library stubs
+from typing import Any
+from typing import Dict
+from typing import Optional
+
+import pandas as pd  # type:ignore
 
 from pandas_estat.appid import get_appid
 from pandas_estat.base import BaseReader
 
 
 def read_statsdata(
-    code, limit=None, start_position=None, lang="J", appid=None, version="3.0", **kwargs
+    code: str,
+    limit: Optional[int] = None,
+    start_position: Optional[int] = None,
+    lang: str = "J",
+    appid: Optional[str] = None,
+    version: str = "3.0",
+    **kwargs
 ) -> pd.DataFrame:
-    """
-    統計データを取得します。
+    """統計データを取得します。
 
     Parameters
     ----------
@@ -59,8 +69,7 @@ def read_statsdata(
 
 
 class StatsDataReader(BaseReader):
-    """
-    統計データを取得します。
+    """統計データを取得します。
 
     Parameters
     ----------
@@ -98,8 +107,14 @@ class StatsDataReader(BaseReader):
     TABLE_TAG = "VALUE"
 
     def __init__(
-        self, code, limit=None, start_position=None, lang="J", appid=None, version="3.0"
-    ):
+        self,
+        code: str,
+        limit: Optional[int] = None,
+        start_position: Optional[int] = None,
+        lang: str = "J",
+        appid: Optional[str] = None,
+        version: str = "3.0",
+    ) -> None:
         self.code = code
         self.limit = limit
         self.start_position = start_position
@@ -119,8 +134,7 @@ class StatsDataReader(BaseReader):
 
     @property
     def params(self) -> dict:
-        """
-        e-Stat API のパラメータ群を `dict` 形式で返します。
+        """e-Stat API のパラメータ群を `dict` 形式で返します。
         参照: e-Stat API v3.0 仕様 2.3 API の利用方法 - 統計データ取得
         参照: e-Stat API v3.0 仕様 3.4 API パラメータ - 統計データ取得
 
@@ -128,7 +142,7 @@ class StatsDataReader(BaseReader):
         -------
         params : dict
         """
-        params = {"appId": self.appid, "statsDataId": self.code}
+        params: Dict[str, Any] = {"appId": self.appid, "statsDataId": self.code}
 
         if self.limit is not None:
             params["limit"] = self.limit
