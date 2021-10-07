@@ -1,9 +1,9 @@
 import os
+from typing import Optional
 
 
 class _GlobalAppID:
-    """
-    Singleton object to configure global app id.
+    """Singleton object to configure global app id.
 
     Parameters
     ----------
@@ -16,14 +16,14 @@ class _GlobalAppID:
             cls._instance = super().__new__(cls)
         return cls._instance
 
-    def __init__(self, value):
+    def __init__(self, value: Optional[str]) -> None:
         self.value = value
 
 
 _global_appid = _GlobalAppID(None)
 
 
-def set_appid(appid: str) -> None:
+def set_appid(appid: Optional[str]) -> None:
     """アプリケーション ID を設定します。
 
     Parameters
@@ -34,9 +34,8 @@ def set_appid(appid: str) -> None:
     _global_appid.value = appid
 
 
-def get_appid(appid=None) -> str:
-    """
-    Get Application ID.
+def get_appid(appid: Optional[str] = None) -> Optional[str]:
+    """Get Application ID.
 
     The Parameter `appid`, global app ID in `_GlobalAppID`, and
     environment variable `ESTAT_APPID` are referenced in order.
