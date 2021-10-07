@@ -1,19 +1,23 @@
 import re
+from typing import Any
+from typing import Dict
+from typing import Optional
 
-import pandas as pd
+# found module but no type hints or library stubs
+import pandas as pd  # type: ignore
 
 from pandas_estat.appid import get_appid
 from pandas_estat.base import BaseReader
 
 
 def read_statslist(
-    code,
-    limit=None,
-    start_position=None,
-    updated_date=None,
-    lang="J",
-    appid=None,
-    version="3.0",
+    code: str,
+    limit: int = None,
+    start_position: Optional[int] = None,
+    updated_date: Optional[str] = None,
+    lang: str = "J",
+    appid: Optional[str] = None,
+    version: str = "3.0",
     **kwargs,
 ) -> pd.DataFrame:
     """統計表情報を取得します。
@@ -75,8 +79,7 @@ def read_statslist(
 
 
 class StatsListReader(BaseReader):
-    """
-    統計表情報を取得します。
+    """統計表情報を取得します。
 
     Parameters
     ----------
@@ -124,14 +127,14 @@ class StatsListReader(BaseReader):
 
     def __init__(
         self,
-        code,
-        limit=None,
-        start_position=None,
-        updated_date=None,
-        lang="J",
-        appid=None,
-        version="3.0",
-    ):
+        code: str,
+        limit: Optional[int] = None,
+        start_position: Optional[int] = None,
+        updated_date: Optional[str] = None,
+        lang: str = "J",
+        appid: Optional[str] = None,
+        version: str = "3.0",
+    ) -> None:
         self.code = code
         self.limit = limit
         self.start_position = start_position
@@ -155,8 +158,7 @@ class StatsListReader(BaseReader):
 
     @property
     def params(self) -> dict:
-        """
-        e-Stat API のパラメータ群を `dict` 形式で返します。
+        """e-Stat API のパラメータ群を `dict` 形式で返します。
         参照: e-Stat API v3.0 仕様 2.1 API の利用方法 - 統計表情報取得
         参照: e-Stat API v3.0 仕様 3.2 API パラメータ - 統計表情報取得
 
@@ -164,7 +166,7 @@ class StatsListReader(BaseReader):
         -------
         params : dict
         """
-        params = {"appId": self.appid, "statsCode": self.code}
+        params: Dict[str, Any] = {"appId": self.appid, "statsCode": self.code}
 
         if self.limit is not None:
             params["limit"] = self.limit
