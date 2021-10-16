@@ -17,6 +17,10 @@ pytest-cov = "^2.11.1"
 codecov = "^2.1.10"
 black = "^21.4b0"
 isort = "^5.7.0"
+Sphinx = "^4.2.0"
+sphinx-autobuild = "^2021.3.14"
+sphinx-copybutton = "^0.4.0"
+furo = "^2021.10.9"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
