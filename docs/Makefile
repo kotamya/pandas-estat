@@ -3,8 +3,10 @@
 
 # You can set these variables from the command line, and also
 # from the environment for the first two.
+RUN						?= poetry run
 SPHINXOPTS    ?=
 SPHINXBUILD   ?= sphinx-build
+SPHINXAUTOBUILD   ?= sphinx-autobuild
 SOURCEDIR     = source
 BUILDDIR      = build
 SPHINXAUTOBUILD   ?= poetry run sphinx-autobuild
@@ -12,7 +14,7 @@ RUN						?= poetry run
 
 # Put it first so that "make" without argument is like "make help".
 help:
-	@$(SPHINXBUILD) -M help "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
+	@$(RUN) $(SPHINXBUILD) -M help "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 
 .PHONY: help Makefile
 

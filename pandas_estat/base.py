@@ -2,15 +2,15 @@ import abc
 import io
 import re
 
-import pandas as pd
+# found module but no type hints or library stubs
+import pandas as pd  # type:ignore
 import requests
 
 from .exceptions import EStatError
 
 
 class BaseReader(abc.ABC):
-    """
-    Base class of all readers in `pandas-estat`.
+    """Base class of all readers in `pandas-estat`.
     `StatsListReader` and `StatsDataReader` subclass this.
 
     Attributes
@@ -30,8 +30,9 @@ class BaseReader(abc.ABC):
     https://www.e-stat.go.jp/api/sites/default/files/uploads/2019/07/API-specVer3.0.pdf
     """
 
-    QUERY = NotImplemented
-    TABLE_TAG = NotImplemented
+    QUERY: str
+    TABLE_TAG: str
+    version: str
 
     @property
     def url(self) -> str:
@@ -97,9 +98,8 @@ class BaseReader(abc.ABC):
         """
         return requests.get(self.url, params=self.params)
 
-    def _parse_response_text(self, text) -> dict:
-        """
-        e-Stat API からのレスポンスのテキストをパースし、`dict` 形式で返します。
+    def _parse_response_text(self, text: str) -> dict:
+        """e-Stat API からのレスポンスのテキストをパースし、`dict` 形式で返します。
         表データのキーは `TABLE` とし、他の値のキーは e-Stat API のタグ名とします。
         参照: e-Stat API v3.0 仕様 4. API の出力データ
 
