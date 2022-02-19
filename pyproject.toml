@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pandas-estat"
-version = "0.3.1"
+version = "0.3.2"
 description = "Fetch e-Stat data as Pandas DataFrame."
 authors = ["Shota Imaki <shota.imaki.0801@gmail.com>"]
 license = "BSD-3-Clause"
@@ -12,12 +12,16 @@ pandas = "^1.3.3"
 requests = "^2.26.0"
 
 [tool.poetry.dev-dependencies]
-pytest = "^6.2.5"
+pytest = "^7.0.1"
 pytest-cov = "^3.0.0"
 codecov = "^2.1.12"
-black = "^21.9b0"
+black = "^22.1"
 isort = "^5.9.3"
-mypy = "^0.910"
+mypy = "^0.931"
+Sphinx = "^4.2.0"
+sphinx-autobuild = "^2021.3.14"
+sphinx-copybutton = "^0.4.0"
+furo = "^2021.9.22"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
