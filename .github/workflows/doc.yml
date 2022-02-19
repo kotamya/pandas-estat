@@ -27,9 +27,8 @@ jobs:
 
     - uses: actions/setup-python@v2
 
-    - run: pip install poetry
-
-    - run: poetry install
+    - name: Install
+      run: pip install poetry && poetry install
 
     - run: make doc
 

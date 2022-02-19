@@ -9,6 +9,8 @@ SPHINXBUILD   ?= sphinx-build
 SPHINXAUTOBUILD   ?= sphinx-autobuild
 SOURCEDIR     = source
 BUILDDIR      = build
+SPHINXAUTOBUILD   ?= poetry run sphinx-autobuild
+RUN						?= poetry run
 
 # Put it first so that "make" without argument is like "make help".
 help:
