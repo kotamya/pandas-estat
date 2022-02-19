@@ -5,10 +5,8 @@ from typing import Optional
 class _GlobalAppID:
     """Singleton object to configure global app id.
 
-    Parameters
-    ----------
-    value : str
-        Application ID.
+    Args:
+        value (str): Application ID.
     """
 
     def __new__(cls, *args, **kwargs):
@@ -26,10 +24,8 @@ _global_appid = _GlobalAppID(None)
 def set_appid(appid: Optional[str]) -> None:
     """アプリケーション ID を設定します。
 
-    Parameters
-    ----------
-    appid : str
-        設定するアプリケーション ID です。
+    Args:
+        appid (str): 設定するアプリケーション ID です。
     """
     _global_appid.value = appid
 
@@ -41,15 +37,11 @@ def get_appid(appid: Optional[str] = None) -> Optional[str]:
     environment variable `ESTAT_APPID` are referenced in order.
     If these are all None, return None.
 
-    Parameters
-    ----------
-    appid : str, optional
-        If given, just return this.
+    Args:
+        appid (str, optional): If given, just return this.
 
-    Returns
-    -------
-    appid : str or None
-        Application ID.
+    Returns:
+        str, optional
     """
     if appid is not None:
         return appid
