@@ -5,11 +5,11 @@
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 <link rel="index" title="索引" href="genindex.html" /><link rel="search" title="検索" href="search.html" /><link rel="next" title="pandas_estat.read_statsdata" href="read_statsdata.html" /><link rel="prev" title="pandas_estat.set_appid" href="set_appid.html" />
 
-    <meta name="generator" content="sphinx-4.2.0, furo 2021.09.22"/>
+    <meta name="generator" content="sphinx-4.4.0, furo 2021.11.23"/>
         <title>pandas_estat.read_statslist - Pandas e-Stat ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=150e365fa939648e89c22f6d7d13c72a1657915a" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=16fb25fabf47304eee183a5e9af80b1ba98259b1" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=7f0192ddeb2adecfbaa87ffbcf67d16358b30bc1" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=0af69da206d614734f649b27d4cdc2dd6c31f41d" />
     
     
 
@@ -192,46 +192,53 @@
 <h1>pandas_estat.read_statslist<a class="headerlink" href="#pandas-estat-read-statslist" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="pandas_estat.read_statslist">
-<span class="sig-prename descclassname"><span class="pre">pandas_estat.</span></span><span class="sig-name descname"><span class="pre">read_statslist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_position</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">updated_date</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lang</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'J'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">appid</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'3.0'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">pandas.core.frame.DataFrame</span></span></span><a class="reference internal" href="_modules/pandas_estat/statslist.html#read_statslist"><span class="viewcode-link"><span class="pre">[ソース]</span></span></a><a class="headerlink" href="#pandas_estat.read_statslist" title="この定義へのパーマリンク">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">pandas_estat.</span></span><span class="sig-name descname"><span class="pre">read_statslist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_position</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">updated_date</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lang</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'J'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">appid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'3.0'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">pandas.core.frame.DataFrame</span></span></span><a class="reference internal" href="_modules/pandas_estat/statslist.html#read_statslist"><span class="viewcode-link"><span class="pre">[ソース]</span></span></a><a class="headerlink" href="#pandas_estat.read_statslist" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>統計表情報を取得します。</p>
 <dl class="field-list simple">
 <dt class="field-odd">パラメータ</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>code</strong> (<em>str</em>) -- 政府統計コードです。次のページから検索できます: <a class="reference external" href="https://www.e-stat.go.jp/api/api-info/api-data">https://www.e-stat.go.jp/api/api-info/api-data</a>
+<li><p><strong>code</strong> (<em>str</em>) -- 政府統計コードです。
+次のページから検索できます: <a class="reference external" href="https://www.e-stat.go.jp/api/api-info/api-data">https://www.e-stat.go.jp/api/api-info/api-data</a>
 数値 5 桁は作成機関で検索し、数値 8 桁は政府統計コードで検索します。
-e-Stat API の <cite>statsCode</cite> に対応します。</p></li>
-<li><p><strong>limit</strong> (<em>int</em><em>, </em><em>default None</em>) -- データの取得行数を指定して下さい。省略時は 10 万件です。
+e-Stat API の <code class="docutils literal notranslate"><span class="pre">statsCode</span></code> に対応します。</p></li>
+<li><p><strong>limit</strong> (<em>int</em><em>, </em><em>optional</em>) -- データの取得行数を指定して下さい。
+省略時は 10 万件です。
 データ件数が指定した limit 値より少ない場合、全件を取得します。
 データ件数が指定した limit 値より多い場合（継続データが存在する）は、
-受信したデータの`&lt;NEXT_KEY&gt;`タグに継続データの開始行が設定されます。
-e-Stat API の <cite>limit</cite> に対応します。</p></li>
-<li><p><strong>start_position</strong> (<em>int</em><em>, </em><em>default None</em>) -- データの取得行数を指定して下さい。省略時は 10 万件です。
+受信したデータの <code class="docutils literal notranslate"><span class="pre">&lt;NEXT_KEY&gt;</span></code> タグに継続データの開始行が設定されます。
+e-Stat API の <code class="docutils literal notranslate"><span class="pre">limit</span></code> に対応します。</p></li>
+<li><p><strong>start_position</strong> (<em>int</em><em>, </em><em>optional</em>) -- データの取得行数を指定して下さい。
+省略時は 10 万件です。
 データ件数が指定した limit 値より少ない場合、全件を取得します。
 データ件数が指定した limit 値より多い場合（継続データが存在する）は、
-受信したデータの`&lt;NEXT_KEY&gt;`タグに継続データの開始行が設定されます。
-e-Stat API の <cite>startPosition</cite> に対応します。</p></li>
-<li><p><strong>updated_date</strong> (<em>str</em><em>, </em><em>default None</em>) -- 更新日付を指定します。指定された期間で更新された統計表の情報を提供します。
-以下のいずれかの形式で指定して下さい。
-<cite>YYYY</cite>: 単年検索、<cite>YYYYMM</cite>: 単月検索、<cite>YYYYMMDD</cite>: 単日検索、
-<cite>YYYYMMDD-YYYYMMDD</cite>: 範囲検索。
-e-Stat API の <cite>updatedDate</cite> に相当します。</p></li>
+受信したデータの <code class="docutils literal notranslate"><span class="pre">&lt;NEXT_KEY&gt;</span></code> タグに継続データの開始行が設定されます。
+e-Stat API の <code class="docutils literal notranslate"><span class="pre">startPosition</span></code> に対応します。</p></li>
+<li><p><strong>updated_date</strong> (<em>str</em><em>, </em><em>optional</em>) -- <p>更新日付を指定します。
+指定された期間で更新された統計表の情報を提供します。
+以下のいずれかの形式で指定して下さい。</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">YYYY</span></code>: 単年検索</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">YYYYMM</span></code>: 単月検索</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">YYYYMMDD</span></code>: 単日検索</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">YYYYMMDD-YYYYMMDD</span></code>: 範囲検索</p></li>
+</ul>
+<p>e-Stat API の <code class="docutils literal notranslate"><span class="pre">updatedDate</span></code> に相当します。</p>
+</p></li>
 <li><p><strong>lang</strong> (<em>{"J"</em><em>, </em><em>"E"}</em><em>, </em><em>default "J"</em>) -- 取得するデータの言語です。
-<cite>"J"`（日本語）または `"E"`（英語）で指定してください。
-e-Stat API の `lang</cite> に対応します。</p></li>
+<code class="docutils literal notranslate"><span class="pre">"J"</span></code> （日本語）または <code class="docutils literal notranslate"><span class="pre">"E"</span></code> （英語）で指定してください。
+e-Stat API の <code class="docutils literal notranslate"><span class="pre">lang</span></code> に対応します。</p></li>
 <li><p><strong>appid</strong> (<em>str</em><em>, </em><em>optional</em>) -- アプリケーション ID です。
 指定しない場合、<a class="reference internal" href="set_appid.html#pandas_estat.set_appid" title="pandas_estat.set_appid"><code class="xref py py-func docutils literal notranslate"><span class="pre">set_appid()</span></code></a> で指定した値か、
-環境変数 <cite>ESTAT_APPID</cite> を用います。
-e-Stat API の <cite>appId</cite> に対応します。</p></li>
+環境変数 <code class="docutils literal notranslate"><span class="pre">ESTAT_APPID</span></code> を用います。
+e-Stat API の <code class="docutils literal notranslate"><span class="pre">appId</span></code> に対応します。</p></li>
 <li><p><strong>version</strong> (<em>str</em><em>, </em><em>default "3.0"</em>) -- API 仕様バージョンです。
 （参考: <a class="reference external" href="https://www.e-stat.go.jp/api/api-info/api-spec">https://www.e-stat.go.jp/api/api-info/api-spec</a>）</p></li>
-<li><p><strong>**kwargs</strong> -- e-Stat API から取得した CSV データをパースする <cite>pandas.read_csv</cite> に与えるパラメータです。</p></li>
+<li><p><strong>**kwargs</strong> -- e-Stat API から取得した CSV データをパースする
+<code class="xref py py-func docutils literal notranslate"><span class="pre">pandas.read_csv()</span></code> に与えるパラメータです。</p></li>
 </ul>
 </dd>
 <dt class="field-even">戻り値</dt>
-<dd class="field-even"><p></p>
-</dd>
-<dt class="field-odd">戻り値の型</dt>
-<dd class="field-odd"><p>pandas.DataFrame</p>
+<dd class="field-even"><p>pandas.DataFrame</p>
 </dd>
 </dl>
 </dd></dl>
@@ -266,11 +273,9 @@ e-Stat API の <cite>appId</cite> に対応します。</p></li>
 
         <div class="related-information">
               Copyright &#169; 2021, Shota Imaki |
-            Built with <a href="https://www.sphinx-doc.org/">Sphinx</a>
-              and
-              <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
-              <a href="https://github.com/pradyunsg/furo">Furo theme</a>. |
-            <a class="muted-link" href="_sources/read_statslist.rst.txt"
+          Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+          <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
+            | <a class="muted-link" href="_sources/read_statslist.rst.txt"
                rel="nofollow">
               ソースコードを表示
             </a>
@@ -288,7 +293,7 @@ e-Stat API の <cite>appId</cite> に対応します。</p></li>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/scripts/main.js"></script>
+    <script src="_static/scripts/furo.js"></script>
     <script src="_static/translations.js"></script>
     </body>
 </html>

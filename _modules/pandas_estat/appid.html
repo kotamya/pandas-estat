@@ -4,11 +4,11 @@
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><link rel="index" title="索引" href="../../genindex.html" /><link rel="search" title="検索" href="../../search.html" />
 
-    <meta name="generator" content="sphinx-4.2.0, furo 2021.09.22"/>
+    <meta name="generator" content="sphinx-4.4.0, furo 2021.11.23"/>
         <title>pandas_estat.appid - Pandas e-Stat ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?digest=150e365fa939648e89c22f6d7d13c72a1657915a" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?digest=16fb25fabf47304eee183a5e9af80b1ba98259b1" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?digest=7f0192ddeb2adecfbaa87ffbcf67d16358b30bc1" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?digest=0af69da206d614734f649b27d4cdc2dd6c31f41d" />
     
     
 
@@ -195,10 +195,8 @@
 <span class="k">class</span> <span class="nc">_GlobalAppID</span><span class="p">:</span>
     <span class="sd">"""Singleton object to configure global app id.</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    value : str</span>
-<span class="sd">        Application ID.</span>
+<span class="sd">    Args:</span>
+<span class="sd">        value (str): Application ID.</span>
 <span class="sd">    """</span>
 
     <span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -216,10 +214,8 @@
 <div class="viewcode-block" id="set_appid"><a class="viewcode-back" href="../../set_appid.html#pandas_estat.set_appid">[ドキュメント]</a><span class="k">def</span> <span class="nf">set_appid</span><span class="p">(</span><span class="n">appid</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="sd">"""アプリケーション ID を設定します。</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    appid : str</span>
-<span class="sd">        設定するアプリケーション ID です。</span>
+<span class="sd">    Args:</span>
+<span class="sd">        appid (str): 設定するアプリケーション ID です。</span>
 <span class="sd">    """</span>
     <span class="n">_global_appid</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">appid</span></div>
 
@@ -231,15 +227,11 @@
 <span class="sd">    environment variable `ESTAT_APPID` are referenced in order.</span>
 <span class="sd">    If these are all None, return None.</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    appid : str, optional</span>
-<span class="sd">        If given, just return this.</span>
+<span class="sd">    Args:</span>
+<span class="sd">        appid (str, optional): If given, just return this.</span>
 
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    appid : str or None</span>
-<span class="sd">        Application ID.</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        str, optional</span>
 <span class="sd">    """</span>
     <span class="k">if</span> <span class="n">appid</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">appid</span>
@@ -261,10 +253,8 @@
 
         <div class="related-information">
               Copyright &#169; 2021, Shota Imaki |
-            Built with <a href="https://www.sphinx-doc.org/">Sphinx</a>
-              and
-              <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
-              <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
+          Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+          <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
         </div>
         
       </footer>
@@ -279,7 +269,7 @@
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/scripts/main.js"></script>
+    <script src="../../_static/scripts/furo.js"></script>
     <script src="../../_static/translations.js"></script>
     </body>
 </html>

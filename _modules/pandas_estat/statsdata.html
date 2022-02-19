@@ -4,11 +4,11 @@
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><link rel="index" title="索引" href="../../genindex.html" /><link rel="search" title="検索" href="../../search.html" />
 
-    <meta name="generator" content="sphinx-4.2.0, furo 2021.09.22"/>
+    <meta name="generator" content="sphinx-4.4.0, furo 2021.11.23"/>
         <title>pandas_estat.statsdata - Pandas e-Stat ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?digest=150e365fa939648e89c22f6d7d13c72a1657915a" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?digest=16fb25fabf47304eee183a5e9af80b1ba98259b1" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?digest=7f0192ddeb2adecfbaa87ffbcf67d16358b30bc1" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?digest=0af69da206d614734f649b27d4cdc2dd6c31f41d" />
     
     
 
@@ -210,41 +210,36 @@
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
     <span class="sd">"""統計データを取得します。</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    code : str</span>
-<span class="sd">        統計表 ID です。統計表情報 (:func:`read_statslist`) から検索できます。</span>
-<span class="sd">        e-Stat API の `statsDataId` に相当します。</span>
-<span class="sd">    limit : int, default None</span>
-<span class="sd">        データの取得行数を指定して下さい。省略時は 10 万件です。</span>
-<span class="sd">        データ件数が指定した limit 値より少ない場合、全件を取得します。</span>
-<span class="sd">        データ件数が指定した limit 値より多い場合（継続データが存在する）は、</span>
-<span class="sd">        受信したデータの `&lt;NEXT_KEY&gt;` タグに継続データの開始行が設定されます。</span>
-<span class="sd">        e-Stat API の `limit` に対応します。</span>
-<span class="sd">    start_position : int, default None</span>
-<span class="sd">        データの取得行数を指定して下さい。省略時は 10 万件です。</span>
-<span class="sd">        データ件数が指定した limit 値より少ない場合、全件を取得します。</span>
-<span class="sd">        データ件数が指定した limit 値より多い場合（継続データが存在する）は、</span>
-<span class="sd">        受信したデータの `&lt;NEXT_KEY&gt;` タグに継続データの開始行が設定されます。</span>
-<span class="sd">        e-Stat API の `startPosition` に対応します。</span>
-<span class="sd">    lang : {"J", "E"}, default "J"</span>
-<span class="sd">        取得するデータの言語です。</span>
-<span class="sd">        `"J"` (日本語) または `"E"` (英語) で指定してください。</span>
-<span class="sd">        e-Stat API の `lang` に対応します。</span>
-<span class="sd">    appid : str, optional</span>
-<span class="sd">        アプリケーション ID です。</span>
-<span class="sd">        指定しない場合、:func:`set_appid` で指定した値か、</span>
-<span class="sd">        環境変数 `ESTAT_APPID` を用います。</span>
-<span class="sd">        e-Stat API の `appId` に対応します。</span>
-<span class="sd">    version : str, default "3.0"</span>
-<span class="sd">        API 仕様バージョンです。</span>
-<span class="sd">        （参考: https://www.e-stat.go.jp/api/api-info/api-spec）</span>
-<span class="sd">    **kwargs</span>
-<span class="sd">        e-Stat API から取得した CSV データをパースする `pandas.read_csv` に与えるパラメータです。</span>
+<span class="sd">    Args:</span>
+<span class="sd">        code (str): 統計表 ID です。</span>
+<span class="sd">            統計表情報 (:func:`read_statslist`) から検索できます。</span>
+<span class="sd">            e-Stat API の ``statsDataId`` に相当します。</span>
+<span class="sd">        limit (int, optional): データの取得行数を指定して下さい。</span>
+<span class="sd">            省略時は 10 万件です。</span>
+<span class="sd">            データ件数が指定した limit 値より少ない場合、全件を取得します。</span>
+<span class="sd">            データ件数が指定した limit 値より多い場合（継続データが存在する）は、</span>
+<span class="sd">            受信したデータの ``&lt;NEXT_KEY&gt;`` タグに継続データの開始行が設定されます。</span>
+<span class="sd">            e-Stat API の ``limit`` に対応します。</span>
+<span class="sd">        start_position (int, optional): データの取得行数を指定して下さい。</span>
+<span class="sd">            省略時は 10 万件です。</span>
+<span class="sd">            データ件数が指定した limit 値より少ない場合、全件を取得します。</span>
+<span class="sd">            データ件数が指定した limit 値より多い場合（継続データが存在する）は、</span>
+<span class="sd">            受信したデータの ``&lt;NEXT_KEY&gt;`` タグに継続データの開始行が設定されます。</span>
+<span class="sd">            e-Stat API の ``startPosition`` に対応します。</span>
+<span class="sd">        lang ({"J", "E"}, default "J"): 取得するデータの言語です。</span>
+<span class="sd">            ``"J"`` （日本語）または ``"E"`` （英語）で指定してください。</span>
+<span class="sd">            e-Stat API の ``lang`` に対応します。</span>
+<span class="sd">        appid (str, optional): アプリケーション ID です。</span>
+<span class="sd">            指定しない場合、:func:`set_appid` で指定した値か、</span>
+<span class="sd">            環境変数 ``ESTAT_APPID`` を用います。</span>
+<span class="sd">            e-Stat API の ``appId`` に対応します。</span>
+<span class="sd">        version (str, default "3.0"): API 仕様バージョンです。</span>
+<span class="sd">            （参考: https://www.e-stat.go.jp/api/api-info/api-spec）</span>
+<span class="sd">        **kwargs: e-Stat API から取得した CSV データをパースする</span>
+<span class="sd">            :func:`pandas.read_csv` に与えるパラメータです。</span>
 
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    pandas.DataFrame</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        pandas.DataFrame</span>
 <span class="sd">    """</span>
     <span class="n">reader</span> <span class="o">=</span> <span class="n">StatsDataReader</span><span class="p">(</span>
         <span class="n">code</span><span class="p">,</span>
@@ -261,36 +256,31 @@
 <span class="k">class</span> <span class="nc">StatsDataReader</span><span class="p">(</span><span class="n">BaseReader</span><span class="p">):</span>
     <span class="sd">"""統計データを取得します。</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    code : str</span>
-<span class="sd">        統計表 ID です。統計表情報 (`read_statslist`) から検索できます。</span>
-<span class="sd">        e-Stat API の `statsDataId` に相当します。</span>
-<span class="sd">    limit : int, default None</span>
-<span class="sd">        データの取得行数を指定して下さい。省略時は 10 万件です。</span>
-<span class="sd">        データ件数が指定した limit 値より少ない場合、全件を取得します。</span>
-<span class="sd">        データ件数が指定した limit 値より多い場合（継続データが存在する）は、</span>
-<span class="sd">        受信したデータの&lt;NEXT_KEY&gt;タグに継続データの開始行が設定されます。</span>
-<span class="sd">        e-Stat API の `limit` に対応します。</span>
-<span class="sd">    start_position : int, default None</span>
-<span class="sd">        データの取得行数を指定して下さい。省略時は 10 万件です。</span>
-<span class="sd">        データ件数が指定した limit 値より少ない場合、全件を取得します。</span>
-<span class="sd">        データ件数が指定した limit 値より多い場合（継続データが存在する）は、</span>
-<span class="sd">        受信したデータの&lt;NEXT_KEY&gt;タグに継続データの開始行が設定されます。</span>
-<span class="sd">        e-Stat API の `startPosition` に対応します。</span>
-<span class="sd">    lang : {"J", "E"}, default "J"</span>
-<span class="sd">        取得するデータの言語です。</span>
-<span class="sd">        "J" (日本語) または "E" (英語) で指定してください。</span>
-<span class="sd">        e-Stat API の `lang` に対応します。</span>
-<span class="sd">    appid : str, optional</span>
-<span class="sd">        アプリケーション ID です。</span>
-<span class="sd">        指定しない場合、`pandas_estat.set_appid(...)` で指定した値か、環境変数 `ESTAT_APPID` を用います。</span>
-<span class="sd">        e-Stat API の `appId` に対応します。</span>
-<span class="sd">    version : str, default "3.0"</span>
-<span class="sd">        API 仕様バージョンです。</span>
-<span class="sd">        https://www.e-stat.go.jp/api/api-info/api-spec</span>
-<span class="sd">    **kwargs</span>
-<span class="sd">        e-Stat API から取得した CSV データをパースする `pandas.read_csv` に与えるパラメータです。</span>
+<span class="sd">    Args:</span>
+<span class="sd">        code (str): 統計表 ID です。</span>
+<span class="sd">            統計表情報 (:func:`read_statslist`) から検索できます。</span>
+<span class="sd">            e-Stat API の ``statsDataId`` に相当します。</span>
+<span class="sd">        limit (int, optional): データの取得行数を指定して下さい。</span>
+<span class="sd">            省略時は 10 万件です。</span>
+<span class="sd">            データ件数が指定した limit 値より少ない場合、全件を取得します。</span>
+<span class="sd">            データ件数が指定した limit 値より多い場合（継続データが存在する）は、</span>
+<span class="sd">            受信したデータの ``&lt;NEXT_KEY&gt;`` タグに継続データの開始行が設定されます。</span>
+<span class="sd">            e-Stat API の ``limit`` に対応します。</span>
+<span class="sd">        start_position (int, optional): データの取得行数を指定して下さい。</span>
+<span class="sd">            省略時は 10 万件です。</span>
+<span class="sd">            データ件数が指定した limit 値より少ない場合、全件を取得します。</span>
+<span class="sd">            データ件数が指定した limit 値より多い場合（継続データが存在する）は、</span>
+<span class="sd">            受信したデータの ``&lt;NEXT_KEY&gt;`` タグに継続データの開始行が設定されます。</span>
+<span class="sd">            e-Stat API の ``startPosition`` に対応します。</span>
+<span class="sd">        lang ({"J", "E"}, default "J"): 取得するデータの言語です。</span>
+<span class="sd">            ``"J"`` （日本語）または ``"E"`` （英語）で指定してください。</span>
+<span class="sd">            e-Stat API の ``lang`` に対応します。</span>
+<span class="sd">        appid (str, optional): アプリケーション ID です。</span>
+<span class="sd">            指定しない場合、:func:`set_appid` で指定した値か、</span>
+<span class="sd">            環境変数 ``ESTAT_APPID`` を用います。</span>
+<span class="sd">            e-Stat API の ``appId`` に対応します。</span>
+<span class="sd">        version (str, default "3.0"): API 仕様バージョンです。</span>
+<span class="sd">            （参考: https://www.e-stat.go.jp/api/api-info/api-spec）</span>
 <span class="sd">    """</span>
 
     <span class="n">QUERY</span> <span class="o">=</span> <span class="s2">"getSimpleStatsData"</span>
@@ -328,9 +318,8 @@
 <span class="sd">        参照: e-Stat API v3.0 仕様 2.3 API の利用方法 - 統計データ取得</span>
 <span class="sd">        参照: e-Stat API v3.0 仕様 3.4 API パラメータ - 統計データ取得</span>
 
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        params : dict</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            dict</span>
 <span class="sd">        """</span>
         <span class="n">params</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"appId"</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">appid</span><span class="p">,</span> <span class="s2">"statsDataId"</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">code</span><span class="p">}</span>
 
@@ -354,10 +343,8 @@
 
         <div class="related-information">
               Copyright &#169; 2021, Shota Imaki |
-            Built with <a href="https://www.sphinx-doc.org/">Sphinx</a>
-              and
-              <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
-              <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
+          Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+          <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
         </div>
         
       </footer>
@@ -372,7 +359,7 @@
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/scripts/main.js"></script>
+    <script src="../../_static/scripts/furo.js"></script>
     <script src="../../_static/translations.js"></script>
     </body>
 </html>
