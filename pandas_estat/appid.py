@@ -49,7 +49,7 @@ def get_appid(appid: Optional[str] = None) -> Optional[str]:
     """
     if appid is not None:
         return appid
-    elif _global_appid.value is not None:
+    elif _global_appid.get_appid() is not None:
         return _global_appid.get_appid()
     elif "ESTAT_APPID" in os.environ:
         return os.environ["ESTAT_APPID"]
