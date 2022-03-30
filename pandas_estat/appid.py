@@ -12,13 +12,17 @@ class _GlobalAppID:
     def __new__(cls, *args, **kwargs):
         if not hasattr(cls, "_instance"):
             cls._instance = super().__new__(cls)
+            cls._instance._appid = None
         return cls._instance
 
-    def __init__(self, value: Optional[str]) -> None:
-        self.value = value
+    def set_appid(self, appid: Optional[str]) -> None:
+        self._appid = appid
+
+    def get_appid(self) -> Optional[str]:
+        return self._appid
 
 
-_global_appid = _GlobalAppID(None)
+_global_appid = _GlobalAppID()
 
 
 def set_appid(appid: Optional[str]) -> None:
@@ -27,7 +31,7 @@ def set_appid(appid: Optional[str]) -> None:
     Args:
         appid (str): 設定するアプリケーション ID です。
     """
-    _global_appid.value = appid
+    _global_appid.set_appid(appid)
 
 
 def get_appid(appid: Optional[str] = None) -> Optional[str]:
@@ -45,8 +49,8 @@ def get_appid(appid: Optional[str] = None) -> Optional[str]:
     """
     if appid is not None:
         return appid
-    elif _global_appid.value is not None:
-        return _global_appid.value
+    elif _global_appid.get_appid() is not None:
+        return _global_appid.get_appid()
     elif "ESTAT_APPID" in os.environ:
         return os.environ["ESTAT_APPID"]
     else:
