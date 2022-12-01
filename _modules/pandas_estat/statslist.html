@@ -4,11 +4,11 @@
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><link rel="index" title="索引" href="../../genindex.html" /><link rel="search" title="検索" href="../../search.html" />
 
-    <meta name="generator" content="sphinx-4.5.0, furo 2022.03.04"/>
+    <meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
         <title>pandas_estat.statslist - Pandas e-Stat ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?digest=935aa2abcc5c1da4283d1dc201fb1f0add16d23a" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?digest=25ceb02ed1c46dc30f2321ff83e92799f69dfdb9" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     
     
 
@@ -35,10 +35,12 @@
   }
 </style></head>
   <body>
+    
     <script>
       document.body.dataset.theme = localStorage.getItem("theme") || "auto";
     </script>
     
+
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
   <symbol id="svg-toc" viewBox="0 0 24 24">
     <title>Contents</title>
@@ -177,7 +179,8 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -209,12 +212,12 @@
     <span class="n">limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">start_position</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">updated_date</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">lang</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"J"</span><span class="p">,</span>
+    <span class="n">lang</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;J&quot;</span><span class="p">,</span>
     <span class="n">appid</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">version</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"3.0"</span><span class="p">,</span>
+    <span class="n">version</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;3.0&quot;</span><span class="p">,</span>
     <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
-    <span class="sd">"""統計表情報を取得します。</span>
+    <span class="sd">&quot;&quot;&quot;統計表情報を取得します。</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        code (str): 政府統計コードです。</span>
@@ -243,21 +246,21 @@
 <span class="sd">            - ``YYYYMMDD-YYYYMMDD``: 範囲検索</span>
 
 <span class="sd">            e-Stat API の ``updatedDate`` に相当します。</span>
-<span class="sd">        lang ({"J", "E"}, default "J"): 取得するデータの言語です。</span>
-<span class="sd">            ``"J"`` （日本語）または ``"E"`` （英語）で指定してください。</span>
+<span class="sd">        lang ({&quot;J&quot;, &quot;E&quot;}, default &quot;J&quot;): 取得するデータの言語です。</span>
+<span class="sd">            ``&quot;J&quot;`` （日本語）または ``&quot;E&quot;`` （英語）で指定してください。</span>
 <span class="sd">            e-Stat API の ``lang`` に対応します。</span>
 <span class="sd">        appid (str, optional): アプリケーション ID です。</span>
 <span class="sd">            指定しない場合、:func:`set_appid` で指定した値か、</span>
 <span class="sd">            環境変数 ``ESTAT_APPID`` を用います。</span>
 <span class="sd">            e-Stat API の ``appId`` に対応します。</span>
-<span class="sd">        version (str, default "3.0"): API 仕様バージョンです。</span>
+<span class="sd">        version (str, default &quot;3.0&quot;): API 仕様バージョンです。</span>
 <span class="sd">            （参考: https://www.e-stat.go.jp/api/api-info/api-spec）</span>
 <span class="sd">        **kwargs: e-Stat API から取得した CSV データをパースする</span>
 <span class="sd">            :func:`pandas.read_csv` に与えるパラメータです。</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        pandas.DataFrame</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">reader</span> <span class="o">=</span> <span class="n">StatsListReader</span><span class="p">(</span>
         <span class="n">code</span><span class="p">,</span>
         <span class="n">limit</span><span class="o">=</span><span class="n">limit</span><span class="p">,</span>
@@ -272,7 +275,7 @@
 
 
 <span class="k">class</span> <span class="nc">StatsListReader</span><span class="p">(</span><span class="n">BaseReader</span><span class="p">):</span>
-    <span class="sd">"""統計表情報を取得します。</span>
+    <span class="sd">&quot;&quot;&quot;統計表情報を取得します。</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        code (str): 政府統計コードです。</span>
@@ -302,19 +305,19 @@
 <span class="sd">            - ``YYYYMMDD-YYYYMMDD``: 範囲検索</span>
 
 <span class="sd">            e-Stat API の ``updatedDate`` に相当します。</span>
-<span class="sd">        lang ({"J", "E"}, default "J"): 取得するデータの言語です。</span>
-<span class="sd">            ``"J"`` （日本語）または ``"E"`` （英語）で指定してください。</span>
+<span class="sd">        lang ({&quot;J&quot;, &quot;E&quot;}, default &quot;J&quot;): 取得するデータの言語です。</span>
+<span class="sd">            ``&quot;J&quot;`` （日本語）または ``&quot;E&quot;`` （英語）で指定してください。</span>
 <span class="sd">            e-Stat API の ``lang`` に対応します。</span>
 <span class="sd">        appid (str, optional): アプリケーション ID です。</span>
 <span class="sd">            指定しない場合、:func:`pandas_estat.set_appid` で指定した値か、</span>
 <span class="sd">            環境変数 ``ESTAT_APPID`` を用います。</span>
 <span class="sd">            e-Stat API の ``appId`` に対応します。</span>
-<span class="sd">        version (str, default "3.0"): API 仕様バージョンです。</span>
+<span class="sd">        version (str, default &quot;3.0&quot;): API 仕様バージョンです。</span>
 <span class="sd">            https://www.e-stat.go.jp/api/api-info/api-spec</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">QUERY</span> <span class="o">=</span> <span class="s2">"getSimpleStatsList"</span>
-    <span class="n">TABLE_TAG</span> <span class="o">=</span> <span class="s2">"STAT_INF"</span>
+    <span class="n">QUERY</span> <span class="o">=</span> <span class="s2">&quot;getSimpleStatsList&quot;</span>
+    <span class="n">TABLE_TAG</span> <span class="o">=</span> <span class="s2">&quot;STAT_INF&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
@@ -322,9 +325,9 @@
         <span class="n">limit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">start_position</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">updated_date</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">lang</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"J"</span><span class="p">,</span>
+        <span class="n">lang</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;J&quot;</span><span class="p">,</span>
         <span class="n">appid</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">version</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"3.0"</span><span class="p">,</span>
+        <span class="n">version</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;3.0&quot;</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">code</span> <span class="o">=</span> <span class="n">code</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">limit</span> <span class="o">=</span> <span class="n">limit</span>
@@ -335,21 +338,21 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">version</span> <span class="o">=</span> <span class="n">version</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">appid</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"アプリケーション ID が指定されていません。"</span><span class="p">)</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="n">re</span><span class="o">.</span><span class="n">fullmatch</span><span class="p">(</span><span class="sa">r</span><span class="s2">"(\d</span><span class="si">{5}</span><span class="s2">|\d</span><span class="si">{8}</span><span class="s2">)"</span><span class="p">,</span> <span class="n">code</span><span class="p">)):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;アプリケーション ID が指定されていません。&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="n">re</span><span class="o">.</span><span class="n">fullmatch</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(\d</span><span class="si">{5}</span><span class="s2">|\d</span><span class="si">{8}</span><span class="s2">)&quot;</span><span class="p">,</span> <span class="n">code</span><span class="p">)):</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                <span class="s2">"政府統計コードは 5 桁か 8 桁の数字を str 型で指定してください。</span><span class="se">\n</span><span class="s2">"</span>
-                <span class="s2">"e-Stat 提供データ: https://www.e-stat.go.jp/api/api-info/api-data"</span>
+                <span class="s2">&quot;政府統計コードは 5 桁か 8 桁の数字を str 型で指定してください。</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;e-Stat 提供データ: https://www.e-stat.go.jp/api/api-info/api-data&quot;</span>
             <span class="p">)</span>
 
-        <span class="k">if</span> <span class="n">lang</span> <span class="o">==</span> <span class="s2">"E"</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">lang</span> <span class="o">==</span> <span class="s2">&quot;E&quot;</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">NotImplementedError</span>
-        <span class="k">if</span> <span class="n">lang</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">"J"</span><span class="p">,</span> <span class="s2">"E"</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">'言語 lang は "J" か "E" で指定してください。'</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">lang</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;J&quot;</span><span class="p">,</span> <span class="s2">&quot;E&quot;</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;言語 lang は &quot;J&quot; か &quot;E&quot; で指定してください。&#39;</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">params</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
-        <span class="sd">"""e-Stat API のパラメータ群を `dict` 形式で返します。</span>
+        <span class="sd">&quot;&quot;&quot;e-Stat API のパラメータ群を `dict` 形式で返します。</span>
 
 <span class="sd">        Note:</span>
 <span class="sd">            - 参照: e-Stat API v3.0 仕様 2.1 API の利用方法 - 統計表情報取得</span>
@@ -357,17 +360,17 @@
 
 <span class="sd">        Returns:</span>
 <span class="sd">            dict</span>
-<span class="sd">        """</span>
-        <span class="n">params</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"appId"</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">appid</span><span class="p">,</span> <span class="s2">"statsCode"</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">code</span><span class="p">}</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">params</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;appId&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">appid</span><span class="p">,</span> <span class="s2">&quot;statsCode&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">code</span><span class="p">}</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">limit</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">params</span><span class="p">[</span><span class="s2">"limit"</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">limit</span>
+            <span class="n">params</span><span class="p">[</span><span class="s2">&quot;limit&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">limit</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_position</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">params</span><span class="p">[</span><span class="s2">"startPosition"</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_position</span>
+            <span class="n">params</span><span class="p">[</span><span class="s2">&quot;startPosition&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_position</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">updated_date</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">params</span><span class="p">[</span><span class="s2">"updatedDate"</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">updated_date</span>
+            <span class="n">params</span><span class="p">[</span><span class="s2">&quot;updatedDate&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">updated_date</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">lang</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">params</span><span class="p">[</span><span class="s2">"lang"</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lang</span>
+            <span class="n">params</span><span class="p">[</span><span class="s2">&quot;lang&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lang</span>
 
         <span class="k">return</span> <span class="n">params</span>
 </pre></div>
@@ -407,7 +410,9 @@
 </div><script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
     <script src="../../_static/scripts/furo.js"></script>
     <script src="../../_static/translations.js"></script>
     </body>
